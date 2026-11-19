@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARTS FEST '26 — TWS15 TALENT HUNT | Official Online Exam Portal</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans Malayalam -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Malayalam:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Malayalam', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    .ml-text {
+      font-family: 'Noto Sans Malayalam', 'Inter', sans-serif;
+      line-height: 1.75;
+    }
+    /* Strict selection lock during active examination */
+    .exam-active-lock {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .exam-active-lock textarea,
+    .exam-active-lock input {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+    /* Smooth custom scrollbar for question palette */
+    .palette-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .palette-scroll::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 9999px;
+    }
+    .palette-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .palette-scroll::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    @keyframes timerPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.03); opacity: 0.8; }
+    }
+    .timer-critical {
+      animation: timerPulse 1s ease-in-out infinite;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #ffffff !important; }
+      .print-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- ===================================================================== -->
+  <!-- TOAST NOTIFICATION LAYER (ZERO alert() / confirm() USED)              -->
+  <!-- ===================================================================== -->
+  <div id="toastStack" class="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-[92vw] pointer-events-none no-print"></div>
+
+  <!-- ===================================================================== -->
+  <!-- SCREEN 1: REGISTRATION & OFFICIAL INSTRUCTIONS                        -->
+  <!-- ===================================================================== -->
+  <div id="registrationScreen" class="min-h-screen py-6 px-3 sm:px-6 lg:px-8 flex flex-col items-center justify-center bg-gradient-to-b from-slate-100 via-slate-50 to-indigo-50/40">
+    <div class="w-full max-w-4xl bg-white rounded-3xl shadow-xl border border-slate-200/90 overflow-hidden">
+
+      <!-- Official Event Header -->
+      <div class="bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white px-6 py-7 sm:px-10 sm:py-9 relative overflow-hidden">
+        <div class="absolute -top-20 -right-16 w-72 h-72 rounded-full bg-indigo-500/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-12 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div class="space-y-2.5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-300/30 text-amber-300 text-xs font-extrabold tracking-wider uppercase">
+              <span>🏆 ARTS FEST '26</span>
+              <span>•</span>
+              <span>CATEGORY S — POOL LEVEL</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black tracking-tight text-white">
+              TWS15 TALENT HUNT
+            </h1>
+            <p class="text-sm sm:text-base text-slate-200 ml-text max-w-2xl">
+              Two-Member Team Academic Challenge in <strong>Science, Mathematics &amp; General Knowledge</strong>.<br />
+              സയൻസ്, ഗണിതം, ജനറൽ നോളജ് എന്നീ വിഷയങ്ങളിലായി 150 ചോദ്യങ്ങളുള്ള ഔദ്യോഗിക ഓൺലൈൻ പരീക്ഷ.
+            </p>
+          </div>
+
+          <div class="flex sm:flex-col gap-2 shrink-0">
+            <div class="bg-white/10 backdrop-blur border border-white/15 rounded-2xl px-4 py-2.5 text-center min-w-[96px]">
+              <div class="text-[11px] text-indigo-200 font-bold uppercase">Questions</div>
+              <div class="text-2xl font-black text-white">150</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur border border-white/15 rounded-2xl px-4 py-2.5 text-center min-w-[96px]">
+              <div class="text-[11px] text-indigo-200 font-bold uppercase">Duration</div>
+              <div class="text-2xl font-black text-amber-300">90:00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Metadata Bar -->
+        <div class="relative z-10 mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+          <div class="bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+            <span class="block text-slate-400 font-semibold">Category</span>
+            <span class="font-bold text-white">S (Pool Level Stage)</span>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+            <span class="block text-slate-400 font-semibold">Time Limit</span>
+            <span class="font-bold text-white">90 Minutes (Auto-Submit)</span>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+            <span class="block text-slate-400 font-semibold">Question Pattern</span>
+            <span class="font-bold text-white">120 MCQ + 30 Written</span>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+            <span class="block text-slate-400 font-semibold">Team Composition</span>
+            <span class="font-bold text-white">1 Team (2 Candidates)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Body -->
+      <div class="p-6 sm:p-10 space-y-6">
+
+        <!-- Syllabus & Section Blueprint -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="rounded-2xl bg-emerald-50/80 border border-emerald-200 p-4">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-emerald-950 text-sm">🔬 Science / സയൻസ്</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-200 text-emerald-950 text-xs font-extrabold">Q1–50</span>
+            </div>
+            <p class="text-xs text-emerald-900 mt-1.5 ml-text">40 MCQs (20 Medium, 20 Tight) + 10 Written (5 Medium, 5 Tight)</p>
+          </div>
+          <div class="rounded-2xl bg-blue-50/80 border border-blue-200 p-4">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-blue-950 text-sm">📐 Mathematics / ഗണിതം</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-200 text-blue-950 text-xs font-extrabold">Q51–100</span>
+            </div>
+            <p class="text-xs text-blue-900 mt-1.5 ml-text">40 MCQs (20 Medium, 20 Tight) + 10 Written (5 Medium, 5 Tight)</p>
+          </div>
+          <div class="rounded-2xl bg-purple-50/80 border border-purple-200 p-4">
+            <div class="flex items-center justify-between">
+              <span class="font-extrabold text-purple-950 text-sm">🌍 General Knowledge / ജി.കെ</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-200 text-purple-950 text-xs font-extrabold">Q101–150</span>
+            </div>
+            <p class="text-xs text-purple-900 mt-1.5 ml-text">40 MCQs (20 Medium, 20 Tight) + 10 Written (5 Medium, 5 Tight)</p>
+          </div>
+        </div>
+
+        <!-- Strict Anti-Cheat & Auto-Submit Rules -->
+        <div class="rounded-2xl bg-rose-50 border-2 border-rose-300 p-5">
+          <div class="flex items-start gap-3">
+            <span class="text-2xl shrink-0">🚨</span>
+            <div class="space-y-2">
+              <h2 class="text-sm sm:text-base font-black text-rose-950 ml-text">
+                കർശന പരീക്ഷാ നിബന്ധനകൾ / STRICT ANTI-CHEAT &amp; AUTO-SUBMIT RULES
+              </h2>
+              <ul class="text-xs sm:text-sm text-rose-900 space-y-1.5 list-disc pl-5 ml-text">
+                <li>
+                  <strong>Instant Auto-Submit on Tab Switch / Minimize:</strong> പരീക്ഷ നടക്കുന്നതിനിടയിൽ വേറെ ടാബ് തുറക്കുകയോ, ബ്രൗസർ മിനിമൈസ് ചെയ്യുകയോ, മറ്റൊരു ആപ്പിലേക്ക് മാറുകയോ ചെയ്താൽ <strong>ഉടൻ തന്നെ പരീക്ഷ ഓട്ടോമാറ്റിക്കായി സബ്മിറ്റ് ആകും.</strong>
+                  <span class="block text-rose-700 font-semibold">Switching tabs, minimizing the browser, or losing window focus triggers immediate auto-submission.</span>
+                </li>
+                <li>
+                  <strong>90-Minute Auto-Submit Timer:</strong> 90:00 മിനിറ്റ് പൂർത്തിയാകുമ്പോൾ സമയം അവസാനിച്ചതായി രേഖപ്പെടുത്തി പരീക്ഷ തനിയെ സബ്മിറ്റ് ആകും.
+                </li>
+                <li>
+                  <strong>Automatic Coordinator Notification:</strong> സബ്മിറ്റ് ചെയ്യുന്ന ഉടൻ ശരിയായവ, തെറ്റിയവ, ഉത്തരം നൽകാത്തവ, എഴുതിയ വിവരണ ഉത്തരങ്ങൾ എന്നിവ കൃത്യമായി കോർഡിനേറ്ററുടെ മെയിലിലേക്ക് ഓട്ടോമാറ്റിക്കായി അയക്കപ്പെടും.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registrationForm" class="space-y-4" novalidate>
+          <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 ml-text">Team Registration / ടീം രജിസ്ട്രേഷൻ</h3>
+            <span class="text-xs font-bold text-rose-600">* All fields required</span>
+          </div>
+
+          <div id="regErrorAlert" class="hidden rounded-xl bg-rose-50 border border-rose-300 px-4 py-3 text-xs sm:text-sm font-bold text-rose-800 ml-text"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="teamCodeInput" class="block text-xs font-extrabold text-slate-700 mb-1.5 ml-text">
+                Team Code / Chest Number (ടീം കോഡ്) <span class="text-rose-600">*</span>
+              </label>
+              <input type="text" id="teamCodeInput" required placeholder="e.g., TWS15-S04" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" />
+            </div>
+            <div>
+              <label for="institutionInput" class="block text-xs font-extrabold text-slate-700 mb-1.5 ml-text">
+                Pool / Institution Name (പൂൾ / സ്ഥാപനം) <span class="text-rose-600">*</span>
+              </label>
+              <input type="text" id="institutionInput" required placeholder="e.g., Pool A — Calicut Zone" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" />
+            </div>
+            <div>
+              <label for="candidate1Input" class="block text-xs font-extrabold text-slate-700 mb-1.5 ml-text">
+                Candidate 1 Name (ഒന്നാമത്തെ മത്സരാർത്ഥി) <span class="text-rose-600">*</span>
+              </label>
+              <input type="text" id="candidate1Input" required placeholder="Full Name of Candidate 1" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" />
+            </div>
+            <div>
+              <label for="candidate2Input" class="block text-xs font-extrabold text-slate-700 mb-1.5 ml-text">
+                Candidate 2 Name (രണ്ടാമത്തെ മത്സരാർത്ഥി) <span class="text-rose-600">*</span>
+              </label>
+              <input type="text" id="candidate2Input" required placeholder="Full Name of Candidate 2" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" />
+            </div>
+          </div>
+
+          <label class="flex items-start gap-3 p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 cursor-pointer">
+            <input type="checkbox" id="agreeCheckbox" class="mt-1 w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 shrink-0" />
+            <span class="text-xs sm:text-sm text-indigo-950 font-medium ml-text">
+              ഞങ്ങൾ എല്ലാ പരീക്ഷാ നിബന്ധനകളും വായിച്ചു മനസ്സിലാക്കി. ടാബ് മാറ്റുകയോ ബ്രൗസർ മിനിമൈസ് ചെയ്യുകയോ ചെയ്താൽ പരീക്ഷ ഉടൻ ഓട്ടോ-സബ്മിറ്റ് ആകുമെന്ന് സമ്മതിക്കുന്നു.
+              <span class="block text-indigo-700 text-xs mt-0.5">(We agree to the strict anti-cheat rules, 90-minute timer, and automatic result submission to the coordinator.)</span>
+            </span>
+          </label>
+
+          <button type="submit" id="startExamBtn" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 hover:from-indigo-700 hover:to-blue-800 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-indigo-600/25 transition active:scale-[0.99] ml-text">
+            🚀 Start Examination / പരീക്ഷ ആരംഭിക്കുക
+          </button>
+        </form>
+
+        <!-- Subtle Coordinator Settings Trigger (For Local Fallback Testing) -->
+        <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+          <span>ARTS FEST '26 Official Academic Engine • Vercel Ready (<code class="text-slate-500">/api/submit</code>)</span>
+          <button type="button" id="openCoordModalBtn" class="inline-flex items-center gap-1.5 text-slate-500 hover:text-indigo-700 font-semibold transition px-2.5 py-1 rounded-lg hover:bg-slate-100">
+            <span>⚙️</span>
+            <span>Coordinator Settings</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- HIDDEN COORDINATOR SETTINGS MODAL (LOCAL FORMSUBMIT FALLBACK)         -->
+  <!-- ===================================================================== -->
+  <div id="coordSettingsModal" class="hidden fixed inset-0 z-50 bg-slate-950/65 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">⚙️</span>
+          <h3 class="font-extrabold text-slate-900">Coordinator Settings</h3>
+        </div>
+        <button type="button" id="closeCoordModalBtn" class="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">✕ Close</button>
+      </div>
+
+      <div class="rounded-2xl bg-indigo-50 border border-indigo-200 p-3.5 text-xs text-indigo-950 space-y-1.5 ml-text">
+        <div class="font-extrabold text-indigo-900">Vercel Production Mode (Default):</div>
+        <p>When deployed on Vercel, exam submissions automatically POST JSON directly to <code>/api/submit</code> on your domain.</p>
+      </div>
+
+      <div class="space-y-2">
+        <label for="fallbackEmailInput" class="block text-xs font-extrabold text-slate-700 ml-text">
+          Optional Local Testing Fallback Email (FormSubmit):
+        </label>
+        <input type="email" id="fallbackEmailInput" placeholder="coordinator@gmail.com" class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" />
+        <p class="text-[11px] text-slate-500 ml-text">
+          Vercel ബാക്കെൻഡ് ഇല്ലാത്ത ലോക്കൽ പ്രിവ്യൂവിൽ ടെസ്റ്റ് ചെയ്യുമ്പോൾ മാത്രം FormSubmit വഴി മെയിൽ അയക്കാനാണ് ഇത് ഉപയോഗിക്കുന്നത്.
+        </p>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button type="button" id="clearFallbackEmailBtn" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+          Clear
+        </button>
+        <button type="button" id="saveFallbackEmailBtn" class="flex-1 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition">
+          Save Fallback Email
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SCREEN 2: ACTIVE EXAMINATION INTERFACE                                -->
+  <!-- ===================================================================== -->
+  <div id="examScreen" class="hidden min-h-screen flex flex-col exam-active-lock bg-slate-100">
+
+    <!-- Minimal, High-Contrast Sticky Exam Header -->
+    <header class="sticky top-0 z-30 bg-slate-950 text-white shadow-md border-b border-slate-800">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+        <!-- Team Identity -->
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center font-black text-xs shrink-0">
+            TH26
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs sm:text-sm font-extrabold tracking-tight truncate">
+              TWS15 TALENT HUNT
+            </div>
+            <div id="examHeaderTeamInfo" class="text-[11px] text-slate-300 truncate">
+              Team • Institution
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls: Anti-Cheat Pill, Language, Timer, Mobile Palette, Submit -->
+        <div class="flex items-center gap-2 sm:gap-2.5 flex-wrap justify-end">
+          <div class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-500/20 border border-rose-400/40 text-rose-200 text-[11px] font-bold">
+            <span>🔒</span>
+            <span>Tab Lock Active</span>
+          </div>
+
+          <!-- Language View Switch -->
+          <div class="inline-flex rounded-xl bg-slate-800 p-0.5 border border-slate-700 text-[11px] font-bold">
+            <button type="button" data-lang="both" class="lang-toggle-btn px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white transition">EN + മല</button>
+            <button type="button" data-lang="en" class="lang-toggle-btn px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white transition">EN</button>
+            <button type="button" data-lang="ml" class="lang-toggle-btn px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-white transition">മല</button>
+          </div>
+
+          <!-- 90:00 Countdown Timer -->
+          <div id="timerPill" class="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 font-mono text-sm sm:text-base font-black tracking-wider text-emerald-400 flex items-center gap-1.5">
+            <span>⏱️</span>
+            <span id="timerClock">90:00</span>
+          </div>
+
+          <!-- Mobile Palette Toggle -->
+          <button type="button" id="openMobilePaletteBtn" class="lg:hidden px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white">
+            📋 <span id="mobileCountText">0/150</span>
+          </button>
+
+          <!-- Submit Button -->
+          <button type="button" id="triggerSubmitModalBtn" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-extrabold shadow transition">
+            Submit / സബ്മിറ്റ്
+          </button>
+        </div>
+      </div>
+
+      <!-- Subject Quick-Jump Strip -->
+      <div class="bg-slate-900/95 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center gap-2 overflow-x-auto">
+          <button type="button" data-jump="0" class="subj-nav-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-indigo-600 text-white">
+            <span>🔬 Science (1–50)</span>
+            <span id="navCntScience" class="px-2 py-0.5 rounded-full bg-white/20 text-[11px]">0/50</span>
+          </button>
+          <button type="button" data-jump="50" class="subj-nav-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-slate-800 text-slate-200 hover:bg-slate-700">
+            <span>📐 Mathematics (51–100)</span>
+            <span id="navCntMaths" class="px-2 py-0.5 rounded-full bg-black/25 text-[11px]">0/50</span>
+          </button>
+          <button type="button" data-jump="100" class="subj-nav-btn shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-slate-800 text-slate-200 hover:bg-slate-700">
+            <span>🌍 General Knowledge (101–150)</span>
+            <span id="navCntGK" class="px-2 py-0.5 rounded-full bg-black/25 text-[11px]">0/50</span>
+          </button>
+          <div class="ml-auto hidden sm:flex items-center gap-2 text-xs text-slate-300 shrink-0 pl-2">
+            <span>Total Answered:</span>
+            <span id="headerTotalAnswered" class="font-extrabold text-emerald-400">0 / 150</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Exam Workspace -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+      <!-- Active Question Card -->
+      <section class="lg:col-span-8 bg-white rounded-3xl shadow-sm border border-slate-200 p-5 sm:p-8 flex flex-col min-h-[530px]">
+        <!-- Question Metadata Tags -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span id="qBadgeNumber" class="px-3.5 py-1 rounded-xl bg-slate-900 text-white font-black text-sm">
+              Q 1 / 150
+            </span>
+            <span id="qBadgeSubject" class="px-3 py-1 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200 font-extrabold text-xs">
+              Science
+            </span>
+            <span id="qBadgeDifficulty" class="px-3 py-1 rounded-xl bg-amber-100 text-amber-950 font-extrabold text-xs">
+              Medium
+            </span>
+            <span id="qBadgeType" class="px-3 py-1 rounded-xl bg-sky-100 text-sky-950 font-extrabold text-xs">
+              MCQ
+            </span>
+          </div>
+          <span id="qAnsweredPill" class="px-3 py-1 rounded-full bg-slate-100 text-slate-500 font-bold text-xs">
+            ⚪ Unanswered
+          </span>
+        </div>
+
+        <!-- Bilingual Question Stem -->
+        <div class="py-5 space-y-3">
+          <h2 id="qTextEn" class="text-base sm:text-xl font-bold text-slate-900 leading-relaxed"></h2>
+          <p id="qTextMl" class="text-base sm:text-lg font-semibold text-slate-800 ml-text bg-slate-50 rounded-2xl p-4 border border-slate-200/70"></p>
+        </div>
+
+        <!-- Dynamic Answer Controls (MCQ Options or Written Textarea) -->
+        <div id="answerControls" class="flex-1 py-1"></div>
+
+        <!-- Navigation Footer -->
+        <div class="pt-6 mt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <button type="button" id="prevQBtn" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm transition disabled:opacity-40">
+              ← Previous
+            </button>
+            <button type="button" id="clearQBtn" class="px-4 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-sm transition">
+              Clear / മായ്ക്കുക
+            </button>
+          </div>
+          <button type="button" id="nextQBtn" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition">
+            Next Question →
+          </button>
+        </div>
+      </section>
+
+      <!-- Desktop Question Palette (1–150) -->
+      <aside class="hidden lg:flex lg:col-span-4 flex-col bg-white rounded-3xl shadow-sm border border-slate-200 p-5 sticky top-32 max-h-[calc(100vh-9rem)]">
+        <div class="flex items-center justify-between mb-2.5">
+          <h3 class="font-extrabold text-slate-900 text-sm">Question Palette (1–150)</h3>
+          <span id="paletteProgressLabel" class="text-xs font-extrabold text-indigo-700">0 / 150</span>
+        </div>
+
+        <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden mb-3">
+          <div id="paletteProgressBar" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%;"></div>
+        </div>
+
+        <!-- Color Legend -->
+        <div class="grid grid-cols-2 gap-1.5 text-[11px] font-bold text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 mb-3">
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-500 inline-block"></span> Answered</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-indigo-600 inline-block"></span> Current</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-slate-200 inline-block"></span> Unanswered</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded border-2 border-purple-500 bg-purple-50 inline-block"></span> Written Q</div>
+        </div>
+
+        <!-- Subject Filter for Palette -->
+        <div class="flex gap-1 mb-3 text-[11px] font-extrabold">
+          <button type="button" data-pfilter="all" class="palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-900 text-white transition">All</button>
+          <button type="button" data-pfilter="Science" class="palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Sci</button>
+          <button type="button" data-pfilter="Mathematics" class="palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Maths</button>
+          <button type="button" data-pfilter="General Knowledge" class="palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">GK</button>
+        </div>
+
+        <div id="desktopPalette" class="palette-scroll overflow-y-auto grid grid-cols-6 gap-1.5 pr-1"></div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Mobile Palette Drawer Modal -->
+  <div id="mobilePaletteModal" class="hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-2 sm:p-4">
+    <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-5 max-h-[82vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="font-extrabold text-slate-900">Question Palette (1–150)</h3>
+        <button type="button" id="closeMobilePaletteBtn" class="px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">✕ Close</button>
+      </div>
+      <div class="flex gap-1 py-2.5 text-[11px] font-extrabold">
+        <button type="button" data-mpfilter="all" class="mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-900 text-white">All</button>
+        <button type="button" data-mpfilter="Science" class="mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700">Sci</button>
+        <button type="button" data-mpfilter="Mathematics" class="mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700">Maths</button>
+        <button type="button" data-mpfilter="General Knowledge" class="mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700">GK</button>
+      </div>
+      <div id="mobilePalette" class="palette-scroll overflow-y-auto grid grid-cols-6 sm:grid-cols-8 gap-1.5 py-2"></div>
+    </div>
+  </div>
+
+  <!-- Manual Submit Confirmation Modal -->
+  <div id="confirmSubmitModal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-2xl shrink-0">📝</div>
+        <div>
+          <h3 class="text-lg font-extrabold text-slate-900">Confirm Final Submission</h3>
+          <p class="text-xs text-slate-500 ml-text">പരീക്ഷ അന്തിമമായി സബ്മിറ്റ് ചെയ്യാൻ ഉറപ്പാണോ?</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-center">
+        <div>
+          <div class="text-[11px] text-slate-500 font-bold">MCQ Answered</div>
+          <div id="modalMcqAns" class="text-xl font-black text-emerald-600">0/120</div>
+        </div>
+        <div>
+          <div class="text-[11px] text-slate-500 font-bold">Written</div>
+          <div id="modalWrittenAns" class="text-xl font-black text-purple-600">0/30</div>
+        </div>
+        <div>
+          <div class="text-[11px] text-slate-500 font-bold">Unanswered</div>
+          <div id="modalTotalUnans" class="text-xl font-black text-rose-600">150</div>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-600 ml-text">
+        സബ്മിറ്റ് ചെയ്താൽ ഉത്തരങ്ങൾ തിരുത്താൻ കഴിയില്ല. നിങ്ങളുടെ മാർക്കും വിശദമായ റിപ്പോർട്ടും ഉടൻ തന്നെ കോർഡിനേറ്ററുടെ മെയിലിലേക്ക് അയക്കപ്പെടും.
+      </p>
+
+      <div class="flex gap-2.5 pt-1">
+        <button type="button" id="cancelSubmitModalBtn" class="flex-1 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm transition">
+          Back to Exam
+        </button>
+        <button type="button" id="confirmFinalSubmitBtn" class="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-lg transition">
+          Yes, Submit Now
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SCREEN 3: DETAILED ACCURATE RESULT & EVALUATION DASHBOARD             -->
+  <!-- ===================================================================== -->
+  <div id="resultScreen" class="hidden min-h-screen py-6 px-3 sm:px-6 lg:px-8 bg-slate-50">
+    <div class="max-w-6xl mx-auto space-y-6">
+
+      <!-- Official Result Header & Submission Reason Banner -->
+      <div id="resultHeaderBanner" class="rounded-3xl p-6 shadow-md border-2 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1.5">
+          <div id="submitTypeBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider"></div>
+          <h1 class="text-xl sm:text-3xl font-black text-slate-900">
+            ARTS FEST '26 — TWS15 TALENT HUNT
+          </h1>
+          <p id="submitReasonText" class="text-sm font-bold ml-text"></p>
+        </div>
+        <div class="text-left md:text-right text-xs sm:text-sm text-slate-700 space-y-0.5 shrink-0 bg-white/70 rounded-2xl px-4 py-3 border border-slate-200/70">
+          <div id="resTeamSummary" class="font-black text-slate-900 text-base"></div>
+          <div id="resCandidatesSummary" class="font-semibold"></div>
+          <div id="resInstitutionSummary" class="text-slate-600"></div>
+          <div id="resTimestampSummary" class="text-xs text-slate-500 pt-1"></div>
+        </div>
+      </div>
+
+      <!-- LIVE EMAIL NOTIFICATION STATUS BANNER (VERCEL /api/submit) -->
+      <div id="emailNotificationBanner" class="rounded-2xl bg-white border-2 border-indigo-200 shadow-sm p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
+        <div class="flex items-start gap-3">
+          <div id="emailStatusIcon" class="text-2xl mt-0.5 shrink-0">⏳</div>
+          <div>
+            <h2 id="emailStatusHeadline" class="font-extrabold text-slate-900 text-sm sm:text-base ml-text">
+              Sending Result to Coordinator Email...
+            </h2>
+            <p id="emailStatusSubtext" class="text-xs sm:text-sm text-slate-600 ml-text mt-0.5"></p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <button type="button" id="retryEmailBtn" class="hidden px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-extrabold shadow transition">
+            🔄 Retry Sending Email
+          </button>
+          <button type="button" id="copyFullReportBtn" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">
+            📋 Copy Report
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI SUMMARY CARDS (MALAYALAM + ENGLISH) -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        <div class="rounded-3xl bg-white border-2 border-emerald-200 p-5 shadow-sm">
+          <div class="text-xs font-extrabold text-emerald-800 ml-text">✅ ശരിയായവ (Correct MCQs)</div>
+          <div class="mt-2 flex items-baseline gap-1">
+            <span id="kpiCorrect" class="text-3xl sm:text-4xl font-black text-emerald-600">0</span>
+            <span class="text-sm font-bold text-slate-400">/ 120</span>
+          </div>
+          <div class="text-[11px] text-emerald-700 font-semibold mt-1">Auto-evaluated MCQs</div>
+        </div>
+
+        <div class="rounded-3xl bg-white border-2 border-rose-200 p-5 shadow-sm">
+          <div class="text-xs font-extrabold text-rose-800 ml-text">❌ തെറ്റിയവ (Wrong MCQs)</div>
+          <div class="mt-2 flex items-baseline gap-1">
+            <span id="kpiWrong" class="text-3xl sm:text-4xl font-black text-rose-600">0</span>
+            <span class="text-sm font-bold text-slate-400">/ 120</span>
+          </div>
+          <div class="text-[11px] text-rose-700 font-semibold mt-1">Incorrect selections</div>
+        </div>
+
+        <div class="rounded-3xl bg-white border-2 border-slate-200 p-5 shadow-sm">
+          <div class="text-xs font-extrabold text-slate-700 ml-text">⚪ ഉത്തരം നൽകാത്തവ (Unanswered)</div>
+          <div class="mt-2 flex items-baseline gap-1">
+            <span id="kpiUnanswered" class="text-3xl sm:text-4xl font-black text-slate-700">0</span>
+            <span class="text-sm font-bold text-slate-400">/ 120</span>
+          </div>
+          <div class="text-[11px] text-slate-500 font-semibold mt-1">Skipped MCQs</div>
+        </div>
+
+        <div class="rounded-3xl bg-white border-2 border-purple-200 p-5 shadow-sm">
+          <div class="text-xs font-extrabold text-purple-800 ml-text">✍️ എഴുതിയവ (Written Attempted)</div>
+          <div class="mt-2 flex items-baseline gap-1">
+            <span id="kpiWritten" class="text-3xl sm:text-4xl font-black text-purple-600">0</span>
+            <span class="text-sm font-bold text-slate-400">/ 30</span>
+          </div>
+          <div class="text-[11px] text-purple-700 font-semibold mt-1">For coordinator review</div>
+        </div>
+
+        <div class="col-span-2 md:col-span-1 rounded-3xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white p-5 shadow-md">
+          <div class="text-xs font-extrabold text-indigo-100 ml-text">🎯 കൃത്യത (Accuracy %)</div>
+          <div id="kpiAccuracy" class="mt-2 text-3xl sm:text-4xl font-black text-white">0.0%</div>
+          <div id="kpiTimeTaken" class="text-[11px] text-indigo-100 font-semibold mt-1">Time Taken: 0m 0s</div>
+        </div>
+      </div>
+
+      <!-- SUBJECT-WISE ACCURACY TABLE & EXPORT CONTROLS -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <!-- Subject-wise Accuracy Table -->
+        <div class="lg:col-span-8 rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+          <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h3 class="font-extrabold text-slate-900 text-sm sm:text-base ml-text">
+              📊 Subject-wise Accuracy Table / വിഷയാടിസ്ഥാനത്തിലുള്ള കൃത്യത
+            </h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="bg-slate-50 text-slate-600 border-b border-slate-200">
+                  <th class="py-3 px-4 font-extrabold">Subject / വിഷയം</th>
+                  <th class="py-3 px-3 font-extrabold text-center">MCQ</th>
+                  <th class="py-3 px-3 font-extrabold text-center text-emerald-700">ശരി (Correct)</th>
+                  <th class="py-3 px-3 font-extrabold text-center text-rose-700">തെറ്റ് (Wrong)</th>
+                  <th class="py-3 px-3 font-extrabold text-center text-slate-600">ഒഴിവാക്കിയവ</th>
+                  <th class="py-3 px-3 font-extrabold text-center text-indigo-700">Accuracy</th>
+                  <th class="py-3 px-4 font-extrabold text-center text-purple-700">Written</th>
+                </tr>
+              </thead>
+              <tbody id="subjectTableBody" class="divide-y divide-slate-100"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Export Buttons Card -->
+        <div class="lg:col-span-4 rounded-3xl bg-white border border-slate-200 shadow-sm p-5 flex flex-col justify-between gap-4 no-print">
+          <div>
+            <h3 class="font-extrabold text-slate-900 text-sm sm:text-base">Export Official Reports</h3>
+            <p class="text-xs text-slate-500 mt-1 ml-text">
+              പരീക്ഷാ ഫലം PDF ആയി പ്രിന്റ് ചെയ്യാനോ CSV / TXT റിപ്പോർട്ട് ഡൗൺലോഡ് ചെയ്യാനോ താഴെ ക്ലിക്ക് ചെയ്യുക.
+            </p>
+          </div>
+          <div class="space-y-2.5">
+            <button type="button" id="printPdfBtn" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-extrabold transition">
+              🖨️ Print / Save PDF
+            </button>
+            <button type="button" id="downloadCsvBtn" class="w-full py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200 text-xs sm:text-sm font-extrabold transition">
+              📊 Download CSV Report
+            </button>
+            <button type="button" id="downloadTxtBtn" class="w-full py-2.5 px-4 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-900 border border-indigo-200 text-xs sm:text-sm font-extrabold transition">
+              📄 Download Full TXT Report
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE FILTERABLE REVIEW SECTION (ALL 150 QUESTIONS) -->
+      <div class="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 sm:p-6 border-b border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-black text-slate-900 ml-text">
+              വിശദമായ ഉത്തര പരിശോധന / Question-by-Question Review
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 ml-text">
+              മത്സരാർത്ഥികളുടെ ഉത്തരവും ശരിയുത്തരവും / മാതൃകാ ഉത്തരവും താഴെ താരതമ്യം ചെയ്യാം.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 no-print" id="reviewFilterButtons">
+            <button type="button" data-rfilter="all" class="rev-tab-btn px-3.5 py-2 rounded-xl bg-slate-900 text-white text-xs font-extrabold transition">
+              എല്ലാം (All 150)
+            </button>
+            <button type="button" data-rfilter="correct" class="rev-tab-btn px-3.5 py-2 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-extrabold transition">
+              ✅ ശരിയായവ (<span id="tabCntCorrect">0</span>)
+            </button>
+            <button type="button" data-rfilter="wrong" class="rev-tab-btn px-3.5 py-2 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 text-xs font-extrabold transition">
+              ❌ തെറ്റിയവ (<span id="tabCntWrong">0</span>)
+            </button>
+            <button type="button" data-rfilter="unanswered" class="rev-tab-btn px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 text-xs font-extrabold transition">
+              ⚪ ഒഴിവാക്കിയവ (<span id="tabCntUnans">0</span>)
+            </button>
+            <button type="button" data-rfilter="written" class="rev-tab-btn px-3.5 py-2 rounded-xl bg-purple-50 text-purple-800 border border-purple-200 text-xs font-extrabold transition">
+              ✍️ എഴുതാനുള്ളവ (30)
+            </button>
+          </div>
+        </div>
+
+        <div id="reviewContainer" class="p-4 sm:p-6 space-y-3"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT ENGINE & ALL 150 BILINGUAL QUESTIONS                       -->
+  <!-- ===================================================================== -->
+  <script>
+    const EXAM_TITLE = "ARTS FEST '26 — TWS15 TALENT HUNT";
+    const EXAM_DURATION_SEC = 90 * 60; // Strict 90:00 countdown
+
+    // =========================================================================
+    // 150 GENUINE BILINGUAL QUESTIONS (ENGLISH + MALAYALAM)
+    // Science (1–50), Mathematics (51–100), General Knowledge (101–150)
+    // Each subject: 20 Medium MCQ + 20 Tight MCQ + 5 Medium Written + 5 Tight Written
+    // =========================================================================
+    const QUESTIONS = [
+      // ===================== SCIENCE: Q1–Q20 (MCQ — MEDIUM) =====================
+      {
+        id: 1, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which cell organelle is known as the 'Powerhouse of the Cell' because it synthesizes most of the cell's ATP?",
+        qMl: "കോശത്തിന് ആവശ്യമായ ഊർജ്ജം (ATP) ഉൽപ്പാദിപ്പിക്കുന്നതിനാൽ 'കോശത്തിന്റെ ഊർജ്ജനിലയം' എന്നറിയപ്പെടുന്ന കോശാംഗം ഏതാണ്?",
+        opts: [
+          "Ribosome / റൈബോസോം",
+          "Mitochondria / മൈറ്റോകോൺഡ്രിയ",
+          "Golgi Apparatus / ഗോൾഗി കോംപ്ലക്സ്",
+          "Lysosome / ലൈസോസോം"
+        ],
+        ans: 1
+      },
+      {
+        id: 2, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "What is the SI unit of electrical resistance?",
+        qMl: "വൈദ്യുത പ്രതിരോധത്തിന്റെ (Electrical Resistance) എസ്.ഐ (SI) യൂണിറ്റ് ഏതാണ്?",
+        opts: [
+          "Volt / വോൾട്ട്",
+          "Ampere / ആമ്പിയർ",
+          "Ohm / ഓം",
+          "Watt / വാട്ട്"
+        ],
+        ans: 2
+      },
+      {
+        id: 3, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which gas constitutes approximately 78% of the Earth's atmosphere by volume?",
+        qMl: "ഭൂമിയുടെ അന്തരീക്ഷത്തിൽ ഏകദേശം 78% അടങ്ങിയിരിക്കുന്ന വാതകം ഏതാണ്?",
+        opts: [
+          "Nitrogen / നൈട്രജൻ",
+          "Oxygen / ഓക്സിജൻ",
+          "Carbon Dioxide / കാർബൺ ഡൈ ഓക്സൈഡ്",
+          "Argon / ആർഗൺ"
+        ],
+        ans: 0
+      },
+      {
+        id: 4, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Deficiency of which vitamin causes Scurvy (bleeding gums and delayed wound healing)?",
+        qMl: "ഏത് വിറ്റാമിന്റെ കുറവാണ് സ്കർവി (മോണയിൽ നിന്ന് രക്തം വരൽ) എന്ന രോഗത്തിന് കാരണമാകുന്നത്?",
+        opts: [
+          "Vitamin A / വിറ്റാമിൻ A",
+          "Vitamin B12 / വിറ്റാമിൻ B12",
+          "Vitamin D / വിറ്റാമിൻ D",
+          "Vitamin C / വിറ്റാമിൻ C"
+        ],
+        ans: 3
+      },
+      {
+        id: 5, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which metal remains in a liquid state at standard room temperature (25°C)?",
+        qMl: "സാധാരണ അന്തരീക്ഷ ഊഷ്മാവിൽ (25°C) ദ്രാവകാവസ്ഥയിൽ കാണപ്പെടുന്ന ലോഹം ഏതാണ്?",
+        opts: [
+          "Mercury / മെർക്കുറി (രസം)",
+          "Sodium / സോഡിയം",
+          "Aluminium / അലുമിനിയം",
+          "Copper / ചെമ്പ്"
+        ],
+        ans: 0
+      },
+      {
+        id: 6, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "What is the chemical formula of Baking Soda (Sodium Bicarbonate)?",
+        qMl: "ബേക്കിംഗ് സോഡയുടെ (സോഡിയം ബൈകാർബണേറ്റ്) രാസസൂത്രം ഏതാണ്?",
+        opts: [
+          "Na2CO3 / സോഡിയം കാർബണേറ്റ്",
+          "NaHCO3 / സോഡിയം ബൈകാർബണേറ്റ്",
+          "NaOH / സോഡിയം ഹൈഡ്രോക്സൈഡ്",
+          "NaCl / സോഡിയം ക്ലോറൈഡ്"
+        ],
+        ans: 1
+      },
+      {
+        id: 7, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which part of the human brain is primarily responsible for maintaining body posture and equilibrium?",
+        qMl: "മനുഷ്യശരീരത്തിന്റെ തുലനാവസ്ഥയും പേശികളുടെ ഏകോപനവും നിയന്ത്രിക്കുന്ന തലച്ചോറിന്റെ ഭാഗം ഏതാണ്?",
+        opts: [
+          "Cerebrum / സെറിബ്രം",
+          "Medulla Oblongata / മെഡുല്ല ഒബ്ലോംഗേറ്റ",
+          "Cerebellum / സെറിബെല്ലം",
+          "Hypothalamus / ഹൈപ്പോതലാമസ്"
+        ],
+        ans: 2
+      },
+      {
+        id: 8, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which planet in our solar system is renowned for its extensive icy ring system and has the largest number of confirmed moons?",
+        qMl: "സൗരയൂഥത്തിൽ മനോഹരമായ ഹിമവലയങ്ങൾക്ക് പ്രശസ്തവും ഏറ്റവും കൂടുതൽ ഉപഗ്രഹങ്ങളുള്ളതുമായ ഗ്രഹം ഏതാണ്?",
+        opts: [
+          "Jupiter / വ്യാഴം",
+          "Uranus / യുറാനസ്",
+          "Neptune / നെപ്റ്റ്യൂൺ",
+          "Saturn / ശനി"
+        ],
+        ans: 3
+      },
+      {
+        id: 9, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "The twinkling of stars in the night sky is primarily caused by:",
+        qMl: "രാത്രി ആകാശത്ത് നക്ഷത്രങ്ങൾ മിന്നിത്തിളങ്ങുന്നതിന് പ്രധാന കാരണം ഏത് പ്രകാശ പ്രതിഭാസമാണ്?",
+        opts: [
+          "Atmospheric Refraction / അന്തരീക്ഷ അപവർത്തനം",
+          "Dispersion of Light / പ്രകാശത്തിന്റെ പ്രകീർണ്ണനം",
+          "Diffraction of Light / വിഭംഗനം",
+          "Polarization / ധ്രുവീകരണം"
+        ],
+        ans: 0
+      },
+      {
+        id: 10, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which blood group is medically recognized as the 'Universal Donor' for red blood cell transfusions?",
+        qMl: "രക്തദാനത്തിൽ 'സാർവത്രിക ദാതാവ്' (Universal Donor) എന്ന് അറിയപ്പെടുന്ന രക്തഗ്രൂപ്പ് ഏതാണ്?",
+        opts: [
+          "AB Positive / AB+",
+          "O Negative / O-",
+          "A Positive / A+",
+          "B Negative / B-"
+        ],
+        ans: 1
+      },
+      {
+        id: 11, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "What is the neutral pH value of pure distilled water at 25°C?",
+        qMl: "25°C താപനിലയിൽ ശുദ്ധജലത്തിന്റെ നിർവീര്യ (Neutral) pH മൂല്യം എത്രയാണ്?",
+        opts: [
+          "5.0 / അഞ്ച്",
+          "6.5 / ആറര",
+          "7.0 / ഏഴ്",
+          "8.5 / എട്ടര"
+        ],
+        ans: 2
+      },
+      {
+        id: 12, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which ISRO mission achieved India's historic soft landing near the Moon's south pole in August 2023?",
+        qMl: "2023 ഓഗസ്റ്റിൽ ചന്ദ്രന്റെ ദക്ഷിണധ്രുവത്തിന് സമീപം വിജയകരമായി സോഫ്റ്റ് ലാൻഡിംഗ് നടത്തിയ ഐ.എസ്.ആർ.ഒ ദൗത്യം ഏതാണ്?",
+        opts: [
+          "Chandrayaan-1 / ചന്ദ്രയാൻ-1",
+          "Aditya-L1 / ആദിത്യ-L1",
+          "Mangalyaan / മംഗൾയാൻ",
+          "Chandrayaan-3 / ചന്ദ്രയാൻ-3"
+        ],
+        ans: 3
+      },
+      {
+        id: 13, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which green pigment in plant chloroplasts absorbs light energy to drive photosynthesis?",
+        qMl: "സസ്യങ്ങളിലെ ഹരിതകണങ്ങളിൽ സൂര്യപ്രകാശം ആഗിരണം ചെയ്ത് പ്രകാശസംശ്ലേഷണത്തിന് സഹായിക്കുന്ന വർണ്ണകം ഏതാണ്?",
+        opts: [
+          "Chlorophyll / ഹരിതകം (ക്ലോറോഫിൽ)",
+          "Hemoglobin / ഹീമോഗ്ലോബിൻ",
+          "Melanin / മെലാനിൻ",
+          "Bilirubin / ബിലിറൂബിൻ"
+        ],
+        ans: 0
+      },
+      {
+        id: 14, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Through which of the following media can mechanical sound waves NOT propagate?",
+        qMl: "താഴെ പറയുന്നവയിൽ ഏത് മാധ്യമത്തിലൂടെയാണ് ശബ്ദതരംഗങ്ങൾക്ക് സഞ്ചരിക്കാൻ കഴിയാത്തത്?",
+        opts: [
+          "Steel / ഉരുക്ക്",
+          "Vacuum / ശൂന്യത",
+          "Water / ജലം",
+          "Air / വായു"
+        ],
+        ans: 1
+      },
+      {
+        id: 15, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which pancreatic hormone lowers blood glucose levels by promoting its uptake into cells?",
+        qMl: "രക്തത്തിലെ ഗ്ലൂക്കോസിന്റെ അളവ് നിയന്ത്രിക്കാൻ പാൻക്രിയാസ് ഉൽപ്പാദിപ്പിക്കുന്ന ഹോർമോൺ ഏതാണ്?",
+        opts: [
+          "Adrenaline / അഡ്രിനാലിൻ",
+          "Thyroxine / തൈറോക്സിൻ",
+          "Insulin / ഇൻസുലിൻ",
+          "Cortisol / കോർട്ടിസോൾ"
+        ],
+        ans: 2
+      },
+      {
+        id: 16, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which naturally occurring allotrope of carbon is the hardest known mineral on Earth?",
+        qMl: "പ്രകൃതിയിൽ കാണപ്പെടുന്ന ഏറ്റവും കാഠിന്യമേറിയ കാർബൺ രൂപാന്തരം ഏതാണ്?",
+        opts: [
+          "Graphite / ഗ്രാഫൈറ്റ്",
+          "Charcoal / കരി",
+          "Fullerene / ഫുള്ളറീൻ",
+          "Diamond / വജ്രം (ഡയമണ്ട്)"
+        ],
+        ans: 3
+      },
+      {
+        id: 17, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which scientific instrument is specifically used to measure atmospheric pressure?",
+        qMl: "അന്തരീക്ഷമർദ്ദം അളക്കാൻ ഉപയോഗിക്കുന്ന ശാസ്ത്രീയ ഉപകരണം ഏതാണ്?",
+        opts: [
+          "Barometer / ബാരോമീറ്റർ",
+          "Hygrometer / ഹൈഗ്രോമീറ്റർ",
+          "Anemometer / അനിമോമീറ്റർ",
+          "Lactometer / ലാക്ടോമീറ്റർ"
+        ],
+        ans: 0
+      },
+      {
+        id: 18, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "How many chromosomes are present in a normal human somatic (body) cell?",
+        qMl: "ഒരു സാധാരണ മനുഷ്യന്റെ ശരീരകോശത്തിൽ ആകെ എത്ര ക്രോമസോമുകൾ ആണുള്ളത്?",
+        opts: [
+          "23 / ഇരുപത്തിമൂന്ന്",
+          "46 / നാൽപ്പത്തിയാറ്",
+          "44 / നാൽപ്പത്തിനാല്",
+          "48 / നാൽപ്പത്തിയെട്ട്"
+        ],
+        ans: 1
+      },
+      {
+        id: 19, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which mirror is fitted as a side rear-view mirror in vehicles to give drivers a wider field of view?",
+        qMl: "വാഹനങ്ങളിൽ പിന്നിലെ കാഴ്ചകൾ വിശാലമായി കാണുന്നതിന് റിയർ-വ്യൂ മിററായി ഉപയോഗിക്കുന്ന ദർപ്പണം ഏതാണ്?",
+        opts: [
+          "Plane Mirror / സമതല ദർപ്പണം",
+          "Concave Mirror / കോൺകേവ് ദർപ്പണം",
+          "Convex Mirror / കോൺവെക്സ് ദർപ്പണം",
+          "Parabolic Mirror / പാരബോളിക് ദർപ്പണം"
+        ],
+        ans: 2
+      },
+      {
+        id: 20, subject: "Science", type: "mcq", difficulty: "Medium",
+        qEn: "Which protozoan disease is transmitted to humans through the bite of an infected female Anopheles mosquito?",
+        qMl: "രോഗബാധിതയായ പെൺ അനോഫിലിസ് കൊതുകിന്റെ കടിയിലൂടെ മനുഷ്യരിലേക്ക് പകരുന്ന രോഗം ഏതാണ്?",
+        opts: [
+          "Dengue Fever / ഡെങ്കിപ്പനി",
+          "Chikungunya / ചിക്കുൻഗുനിയ",
+          "Zika Fever / സിക്ക വൈറസ്",
+          "Malaria / മലേറിയ"
+        ],
+        ans: 3
+      },
+
+      // ===================== SCIENCE: Q21–Q40 (MCQ — TIGHT) =====================
+      {
+        id: 21, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which optical scattering phenomenon explains both the blue color of the daytime sky and the reddish hue of sunsets?",
+        qMl: "പകൽ ആകാശം നീല നിറത്തിലും സൂര്യാസ്തമയം ചുവപ്പ് നിറത്തിലും കാണപ്പെടുന്നതിന് കാരണമായ വിസരണ പ്രതിഭാസം ഏതാണ്?",
+        opts: [
+          "Rayleigh Scattering / റെയ്‌ലി വിസരണം",
+          "Compton Scattering / കോംപ്ടൺ വിസരണം",
+          "Raman Effect / രാമൻ പ്രഭാവം",
+          "Photoelectric Effect / ഫോട്ടോ ഇലക്ട്രിക് പ്രഭാവം"
+        ],
+        ans: 0
+      },
+      {
+        id: 22, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which element in the modern periodic table possesses the highest electronegativity on the Pauling scale (3.98)?",
+        qMl: "ആധുനിക ആവർത്തനപ്പട്ടികയിൽ പൗളിംഗ് സ്കെയിൽ പ്രകാരം ഏറ്റവും ഉയർന്ന ഇലക്ട്രോനെഗറ്റിവിറ്റി ഉള്ള മൂലകം ഏതാണ്?",
+        opts: [
+          "Oxygen / ഓക്സിജൻ",
+          "Fluorine / ഫ്ലൂറിൻ",
+          "Chlorine / ക്ലോറിൻ",
+          "Nitrogen / നൈട്രജൻ"
+        ],
+        ans: 1
+      },
+      {
+        id: 23, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "What is the approximate escape velocity required for an object to break free from Earth's gravitational pull from its surface?",
+        qMl: "ഭൂമിയുടെ ഗുരുത്വാകർഷണത്തിൽ നിന്ന് പുറത്തുകടക്കാൻ ഉപരിതലത്തിൽ നിന്ന് വേണ്ട പലായന പ്രവേഗം (Escape Velocity) ഏകദേശം എത്രയാണ്?",
+        opts: [
+          "7.9 km/s / 7.9 കി.മീ/സെക്കൻഡ്",
+          "9.8 km/s / 9.8 കി.മീ/സെക്കൻഡ്",
+          "11.2 km/s / 11.2 കി.മീ/സെക്കൻഡ്",
+          "16.7 km/s / 16.7 കി.മീ/സെക്കൻഡ്"
+        ],
+        ans: 2
+      },
+      {
+        id: 24, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which digestive enzyme present in human saliva initiates the breakdown of starch into maltose?",
+        qMl: "മനുഷ്യന്റെ ഉമിനീരിൽ അടങ്ങിയിട്ടുള്ളതും അന്നജത്തെ (Starch) മാൾട്ടോസാക്കി വിഘടിപ്പിക്കുന്നതുമായ എൻസൈം ഏതാണ്?",
+        opts: [
+          "Pepsin / പെപ്സിൻ",
+          "Trypsin / ട്രിപ്സിൻ",
+          "Lipase / ലൈപ്പേസ്",
+          "Salivary Amylase (Ptyalin) / സലൈവറി അമൈലേസ് (ടയാലിൻ)"
+        ],
+        ans: 3
+      },
+      {
+        id: 25, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Aqua Regia, capable of dissolving gold and platinum, is a freshly prepared mixture of concentrated HCl and concentrated HNO3 in what volume ratio?",
+        qMl: "സ്വർണ്ണത്തെയും പ്ലാറ്റിനത്തെയും ലയിപ്പിക്കാൻ ശേഷിയുള്ള 'അക്വാറീജിയ'യിൽ ഗാഢ HCl ഉം ഗാഢ HNO3 ഉം ഏത് അനുപാതത്തിലാണ് കലർത്തിയിരിക്കുന്നത്?",
+        opts: [
+          "3 : 1 (HCl : HNO3)",
+          "1 : 3 (HCl : HNO3)",
+          "2 : 1 (HCl : HNO3)",
+          "1 : 1 (HCl : HNO3)"
+        ],
+        ans: 0
+      },
+      {
+        id: 26, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which revolutionary gene-editing system utilizes an RNA-guided bacterial endonuclease to make targeted edits in DNA?",
+        qMl: "ഡി.എൻ.എയിൽ കൃത്യമായ മാറ്റങ്ങൾ വരുത്താൻ ആർ.എൻ.എ ഗൈഡഡ് ബാക്ടീരിയൽ എൻഡോന്യൂക്ലിയസ് ഉപയോഗിക്കുന്ന ജീൻ-എഡിറ്റിംഗ് സാങ്കേതികവിദ്യ ഏതാണ്?",
+        opts: [
+          "PCR Amplification / പി.സി.ആർ",
+          "CRISPR-Cas9 / ക്രിസ്പർ-കാസ്9",
+          "Southern Blotting / സതേൺ ബ്ലോട്ടിംഗ്",
+          "ELISA Assay / എലിസ ടെസ്റ്റ്"
+        ],
+        ans: 1
+      },
+      {
+        id: 27, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "At which exact temperature do the Celsius and Fahrenheit scales record the identical numerical value?",
+        qMl: "ഏത് താപനിലയിലാണ് സെൽഷ്യസ് സ്കെയിലും ഫാരൻഹീറ്റ് സ്കെയിലും ഒരേ സംഖ്യ കാണിക്കുന്നത്?",
+        opts: [
+          "-32° / മൈനസ് 32 ഡിഗ്രി",
+          "0° / പൂജ്യം ഡിഗ്രി",
+          "-40° / മൈനസ് 40 ഡിഗ്രി",
+          "-273° / മൈനസ് 273 ഡിഗ്രി"
+        ],
+        ans: 2
+      },
+      {
+        id: 28, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which radioactive isotope of Carbon is used in radiocarbon dating to estimate the age of ancient organic fossils?",
+        qMl: "പുരാതന ജൈവ ഫോസിലുകളുടെ പഴക്കം നിർണ്ണയിക്കുന്ന റേഡിയോകാർബൺ ഡേറ്റിംഗിൽ ഉപയോഗിക്കുന്ന കാർബൺ ഐസോടോപ്പ് ഏതാണ്?",
+        opts: [
+          "Carbon-12 / കാർബൺ-12",
+          "Carbon-13 / കാർബൺ-13",
+          "Carbon-16 / കാർബൺ-16",
+          "Carbon-14 / കാർബൺ-14"
+        ],
+        ans: 3
+      },
+      {
+        id: 29, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which law of thermodynamics states that the total entropy of an isolated system can never decrease over time?",
+        qMl: "ഒരു ഒറ്റപ്പെട്ട വ്യൂഹത്തിന്റെ (Isolated System) എൻട്രോപ്പി കാലക്രമേണ ഒരിക്കലും കുറയുന്നില്ല എന്ന് പ്രസ്താവിക്കുന്ന താപഗതിക നിയമം ഏതാണ്?",
+        opts: [
+          "Second Law of Thermodynamics / രണ്ടാം താപഗതിക നിയമം",
+          "Zeroth Law of Thermodynamics / പൂജ്യാം താപഗതിക നിയമം",
+          "First Law of Thermodynamics / ഒന്നാം താപഗതിക നിയമം",
+          "Third Law of Thermodynamics / മൂന്നാം താപഗതിക നിയമം"
+        ],
+        ans: 0
+      },
+      {
+        id: 30, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Where in the Sun-Earth gravitational system is India's solar observatory spacecraft Aditya-L1 halo-orbiting?",
+        qMl: "ഇന്ത്യയുടെ സൂര്യപഠന പേടകമായ ആദിത്യ-L1 ഭൂമി-സൂര്യൻ വ്യവസ്ഥയിലെ ഏത് സ്ഥാനത്താണ് പരിക്രമണം ചെയ്യുന്നത്?",
+        opts: [
+          "Geostationary Orbit / ജിയോസ്റ്റേഷണറി ഭ്രമണപഥം",
+          "Lagrange Point 1 (L1) / ലഗ്രാഞ്ച് പോയിന്റ് 1 (L1)",
+          "Low Earth Orbit / ലോ എർത്ത് ഓർബിറ്റ്",
+          "Lagrange Point 2 (L2) / ലഗ്രാഞ്ച് പോയിന്റ് 2 (L2)"
+        ],
+        ans: 1
+      },
+      {
+        id: 31, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which cranial nerve is the longest and provides major parasympathetic control to the heart, lungs, and digestive tract?",
+        qMl: "ഹൃദയം, ശ്വാസകോശം, ദഹനവ്യവസ്ഥ എന്നിവയുടെ പാരാസിംപതറ്റിക് നിയന്ത്രണം നിർവഹിക്കുന്ന ഏറ്റവും നീളമുള്ള കപാലനാഡി (Cranial Nerve) ഏതാണ്?",
+        opts: [
+          "Optic Nerve (II) / ഒപ്റ്റിക് നാഡി",
+          "Trigeminal Nerve (V) / ട്രൈജെമിനൽ നാഡി",
+          "Vagus Nerve (X) / വേഗസ് നാഡി",
+          "Hypoglossal Nerve (XII) / ഹൈപ്പോഗ്ലോസൽ നാഡി"
+        ],
+        ans: 2
+      },
+      {
+        id: 32, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "What is the hybridization state of each carbon atom in a Benzene (C6H6) molecule?",
+        qMl: "ബെൻസീൻ (C6H6) തന്മാത്രയിലെ ഓരോ കാർബൺ ആറ്റത്തിന്റെയും സങ്കരണാവസ്ഥ (Hybridization) ഏതാണ്?",
+        opts: [
+          "sp / എസ്.പി",
+          "sp3 / എസ്.പി3",
+          "sp3d / എസ്.പി3ഡി",
+          "sp2 / എസ്.പി2"
+        ],
+        ans: 3
+      },
+      {
+        id: 33, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which quantum physicist formulated the Uncertainty Principle stating that a particle's position and momentum cannot both be measured precisely simultaneously?",
+        qMl: "ഒരു കണികയുടെ സ്ഥാനവും ആക്കവും ഒരേസമയം കൃത്യമായി അളക്കാൻ കഴിയില്ലെന്ന അനിശ്ചിതത്വ നിയമം (Uncertainty Principle) ആവിഷ്കരിച്ച ശാസ്ത്രജ്ഞൻ ആരാണ്?",
+        opts: [
+          "Werner Heisenberg / വെർണർ ഹൈസൻബർഗ്",
+          "Erwin Schrödinger / എർവിൻ ഷ്രോഡിംഗർ",
+          "Niels Bohr / നീൽസ് ബോർ",
+          "Max Planck / മാക്സ് പ്ലാങ്ക്"
+        ],
+        ans: 0
+      },
+      {
+        id: 34, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which vitamin is chemically named Cyanocobalamin and contains the essential trace metal Cobalt?",
+        qMl: "രാസപരമായി സയനോകൊബാലമിൻ എന്നറിയപ്പെടുന്നതും കോബാൾട്ട് എന്ന ലോഹം അടങ്ങിയതുമായ വിറ്റാമിൻ ഏതാണ്?",
+        opts: [
+          "Vitamin B1 / വിറ്റാമിൻ B1",
+          "Vitamin B12 / വിറ്റാമിൻ B12",
+          "Vitamin B6 / വിറ്റാമിൻ B6",
+          "Vitamin K / വിറ്റാമിൻ K"
+        ],
+        ans: 1
+      },
+      {
+        id: 35, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "The 'Chandrasekhar Limit' (~1.44 solar masses) defines the maximum stable mass of which stellar remnant?",
+        qMl: "'ചന്ദ്രശേഖർ പരിധി' (ഏകദേശം 1.44 സൗരപിണ്ഡം) ഏത് നക്ഷത്രാവശിഷ്ടത്തിന്റെ പരമാവധി സ്ഥിരതയുള്ള പിണ്ഡത്തെയാണ് നിർണ്ണയിക്കുന്നത്?",
+        opts: [
+          "Neutron Star / ന്യൂട്രോൺ നക്ഷത്രം",
+          "Red Supergiant / ചുവന്ന അതിഭീമൻ",
+          "White Dwarf / വെള്ളക്കുള്ളൻ നക്ഷത്രം (വൈറ്റ് ഡ്വാർഫ്)",
+          "Black Hole / തമോഗർത്തം"
+        ],
+        ans: 2
+      },
+      {
+        id: 36, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which plant hormone exists in gaseous form at room temperature and primarily triggers fruit ripening?",
+        qMl: "വാതകരൂപത്തിൽ കാണപ്പെടുന്നതും പഴങ്ങൾ പഴുക്കുന്നതിന് പ്രധാനമായും സഹായിക്കുന്നതുമായ സസ്യഹോർമോൺ ഏതാണ്?",
+        opts: [
+          "Auxin / ഓക്സിൻ",
+          "Gibberellin / ജിബ്ബറലിൻ",
+          "Abscisic Acid / അബ്സിസിക് ആസിഡ്",
+          "Ethylene / എഥിലീൻ"
+        ],
+        ans: 3
+      },
+      {
+        id: 37, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Heavy Water, used as a neutron moderator in Pressurized Heavy Water Reactors (PHWR), has which chemical formula?",
+        qMl: "ചില ആണവ റിയാക്ടറുകളിൽ ന്യൂട്രോൺ മോഡറേറ്ററായി ഉപയോഗിക്കുന്ന ഘനജലത്തിന്റെ (Heavy Water) രാസസൂത്രം ഏതാണ്?",
+        opts: [
+          "D2O / ഡ്യൂട്ടീരിയം ഓക്സൈഡ്",
+          "H2O2 / ഹൈഡ്രജൻ പെറോക്സൈഡ്",
+          "T2O / ട്രിഷ്യം ഓക്സൈഡ്",
+          "H3O+ / ഹൈഡ്രോണിയം അയോൺ"
+        ],
+        ans: 0
+      },
+      {
+        id: 38, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Optical fibers transmit high-speed light data over long distances with minimal attenuation by relying on:",
+        qMl: "ഒപ്റ്റിക്കൽ ഫൈബറുകളിലൂടെ പ്രകാശ സിഗ്നലുകൾ നഷ്ടമില്ലാതെ ദീർഘദൂരം സഞ്ചരിക്കാൻ സഹായിക്കുന്ന പ്രതിഭാസം ഏതാണ്?",
+        opts: [
+          "Polarization / ധ്രുവീകരണം",
+          "Total Internal Reflection / പൂർണ്ണാന്തര പ്രതിപതനം",
+          "Interference / വ്യതികരണം",
+          "Doppler Effect / ഡോപ്ലർ പ്രഭാവം"
+        ],
+        ans: 1
+      },
+      {
+        id: 39, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "Which structural unit inside the nephron performs the ultrafiltration of blood in human kidneys?",
+        qMl: "മനുഷ്യന്റെ വൃക്കയിലെ നെഫ്രോണിൽ രക്തത്തിന്റെ അതിസൂക്ഷ്മ അരിക്കൽ (Ultrafiltration) നടക്കുന്ന ഭാഗം ഏതാണ്?",
+        opts: [
+          "Loop of Henle / ഹെൻലെയുടെ ലൂപ്പ്",
+          "Collecting Duct / ശേഖരണ നാളി",
+          "Glomerulus & Bowman's Capsule / ഗ്ലോമറുലസും ബോമാൻസ് ക്യാപ്സ്യൂളും",
+          "Ureter / മൂത്രവാഹി"
+        ],
+        ans: 2
+      },
+      {
+        id: 40, subject: "Science", type: "mcq", difficulty: "Tight",
+        qEn: "In the Standard Model of particle physics, the Higgs Boson is an excitation of the field that grants fundamental particles their:",
+        qMl: "കണികാ ഭൗതികശാസ്ത്രത്തിൽ 'ഹിഗ്സ് ബോസോൺ' മൗലിക കണങ്ങൾക്ക് ഏത് ഭൗതിക ഗുണമാണ് നൽകുന്നത്?",
+        opts: [
+          "Electric Charge / വൈദ്യുത ചാർജ്",
+          "Color Charge / കളർ ചാർജ്",
+          "Magnetic Moment / കാന്തിക ആഘൂർണ്ണം",
+          "Mass / പിണ്ഡം"
+        ],
+        ans: 3
+      },
+
+      // ===================== SCIENCE: Q41–Q50 (WRITTEN — 5 MED, 5 TIGHT) =====================
+      {
+        id: 41, subject: "Science", type: "written", difficulty: "Medium",
+        qEn: "Write the chemical symbol of Gold and state the Latin name from which this symbol is derived.",
+        qMl: "സ്വർണ്ണത്തിന്റെ (Gold) രാസപ്രതീകവും അത് ഏത് ലാറ്റിൻ നാമത്തിൽ നിന്നാണ് ഉണ്ടായതെന്നും എഴുതുക.",
+        modelAnswer: "Symbol: Au — derived from the Latin word 'Aurum' (പ്രതീകം: Au, ലാറ്റിൻ നാമം: ഓറം)."
+      },
+      {
+        id: 42, subject: "Science", type: "written", difficulty: "Medium",
+        qEn: "Name the largest internal gland in the human body and mention one primary function it performs.",
+        qMl: "മനുഷ്യശരീരത്തിലെ ഏറ്റവും വലിയ ഗ്രന്ഥിയുടെ പേരും അതിന്റെ ഒരു പ്രധാന ധർമ്മവും എഴുതുക.",
+        modelAnswer: "Liver (കരൾ) — produces bile for fat digestion, detoxifies blood, and stores glycogen."
+      },
+      {
+        id: 43, subject: "Science", type: "written", difficulty: "Medium",
+        qEn: "Identify the organic acid present in household vinegar and write its chemical formula.",
+        qMl: "വിനാഗിരിയിൽ അടങ്ങിയിരിക്കുന്ന ഓർഗാനിക് ആസിഡിന്റെ പേരും അതിന്റെ രാസസൂത്രവും എഴുതുക.",
+        modelAnswer: "Acetic Acid / Ethanoic Acid (അസറ്റിക് ആസിഡ്), Formula: CH3COOH."
+      },
+      {
+        id: 44, subject: "Science", type: "written", difficulty: "Medium",
+        qEn: "Why is Mars called the 'Red Planet'? Name the chemical compound responsible for its color.",
+        qMl: "ചൊവ്വയെ 'ചുവന്ന ഗ്രഹം' എന്ന് വിളിക്കാൻ കാരണമെന്ത്? ആ നിറത്തിന് കാരണമായ രാസസംയുക്തം ഏതാണ്?",
+        modelAnswer: "Presence of Iron Oxide (Fe2O3 / അയൺ ഓക്സൈഡ് - തുരുമ്പ്) dust covering its surface."
+      },
+      {
+        id: 45, subject: "Science", type: "written", difficulty: "Medium",
+        qEn: "State Newton's Second Law of Motion and write its mathematical formula and SI unit of Force.",
+        qMl: "ന്യൂട്ടന്റെ രണ്ടാം ചലനനിയമത്തിന്റെ ഗണിതരൂപവും ബലത്തിന്റെ (Force) SI യൂണിറ്റും എഴുതുക.",
+        modelAnswer: "Force equals mass times acceleration (F = m × a); SI unit of Force is Newton (N / ന്യൂട്ടൺ)."
+      },
+      {
+        id: 46, subject: "Science", type: "written", difficulty: "Tight",
+        qEn: "Define Sublimation and give two examples of substances that undergo sublimation at atmospheric pressure.",
+        qMl: "ഉത്പതനം (Sublimation) എന്നാൽ എന്ത്? സാധാരണ മർദ്ദത്തിൽ ഉത്പതനം നടക്കുന്ന രണ്ട് പദാർത്ഥങ്ങൾക്ക് ഉദാഹരണം എഴുതുക.",
+        modelAnswer: "Direct phase transition from solid to gas without becoming liquid (ഖരം നേരിട്ട് വാതകമാകുന്ന പ്രക്രിയ). Examples: Camphor (കർപ്പൂരം), Naphthalene, Dry Ice (Solid CO2), Iodine."
+      },
+      {
+        id: 47, subject: "Science", type: "written", difficulty: "Tight",
+        qEn: "Who discovered Penicillin in 1928, and from which genus of fungus was it originally isolated?",
+        qMl: "1928-ൽ പെനിസിലിൻ കണ്ടുപിടിച്ച ശാസ്ത്രജ്ഞൻ ആരാണ്? ഏത് ഫംഗസിൽ നിന്നാണ് ഇത് ആദ്യമായി വേർതിരിച്ചെടുത്തത്?",
+        modelAnswer: "Alexander Fleming (അലക്സാണ്ടർ ഫ്ലെമിംഗ്); isolated from the mold Penicillium notatum (Penicillium chrysogenum)."
+      },
+      {
+        id: 48, subject: "Science", type: "written", difficulty: "Tight",
+        qEn: "Name the chief ore of Aluminium and the electrolytic process used to extract pure Aluminium from alumina.",
+        qMl: "അലുമിനിയത്തിന്റെ പ്രധാന അയിരിന്റെ പേരും അലുമിനയിൽ നിന്ന് ശുദ്ധമായ അലുമിനിയം വേർതിരിച്ചെടുക്കുന്ന വൈദ്യുതവിശ്ലേഷണ പ്രക്രിയയുടെ പേരും എഴുതുക.",
+        modelAnswer: "Chief Ore: Bauxite (ബോക്സൈറ്റ്, Al2O3·2H2O); Extraction Process: Hall–Héroult process (ഹാൾ-ഹെറോൾട്ട് പ്രക്രിയ)."
+      },
+      {
+        id: 49, subject: "Science", type: "written", difficulty: "Tight",
+        qEn: "Write the full expansion of 'DNA' and name the four nitrogenous bases found in DNA.",
+        qMl: "'DNA' എന്നതിന്റെ പൂർണ്ണരൂപവും അതിൽ അടങ്ങിയിരിക്കുന്ന നാല് നൈട്രജൻ ബേസുകളുടെ പേരുകളും എഴുതുക.",
+        modelAnswer: "Deoxyribonucleic Acid (ഡിയോക്സിറൈബോന്യൂക്ലിക് ആസിഡ്); Bases: Adenine (A), Thymine (T), Guanine (G), Cytosine (C)."
+      },
+      {
+        id: 50, subject: "Science", type: "written", difficulty: "Tight",
+        qEn: "Briefly explain why a person standing on the Moon weighs about 1/6th of their weight on Earth, while their mass remains unchanged.",
+        qMl: "ചന്ദ്രനിൽ നിൽക്കുന്ന ഒരാളുടെ ഭാരം ഭൂമിയിലെ ഭാരത്തിന്റെ ആറിലൊന്നായി കുറയുന്നു, എന്നാൽ പിണ്ഡം മാറുന്നില്ല — കാരണം ചുരുക്കി എഴുതുക.",
+        modelAnswer: "Mass is the amount of matter and is constant everywhere, whereas Weight (W = m×g) depends on gravity; the Moon's surface gravity (~1.62 m/s²) is about 1/6th of Earth's (~9.8 m/s²)."
+      },
+
+      // ===================== MATHEMATICS: Q51–Q70 (MCQ — MEDIUM) =====================
+      {
+        id: 51, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "If 3x − 7 = 2x + 5, what is the value of x² − 10?",
+        qMl: "3x − 7 = 2x + 5 ആണെങ്കിൽ, x² − 10 ന്റെ വില എത്രയാണ്?",
+        opts: [
+          "134 / നൂറ്റിമുപ്പത്തിനാല്",
+          "124 / നൂറ്റിഇരുപത്തിനാല്",
+          "144 / നൂറ്റിനാൽപ്പത്തിനാല്",
+          "154 / നൂറ്റിഅമ്പത്തിനാല്"
+        ],
+        ans: 0
+      },
+      {
+        id: 52, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "What is the sum of all interior angles of a regular octagon (8-sided polygon)?",
+        qMl: "ഒരു അഷ്ടഭുജത്തിന്റെ (8 വശങ്ങളുള്ള ബഹുഭുജം) എല്ലാ ആന്തരിക കോണുകളുടെയും ആകെ തുക എത്രയാണ്?",
+        opts: [
+          "720° / 720 ഡിഗ്രി",
+          "1080° / 1080 ഡിഗ്രി",
+          "900° / 900 ഡിഗ്രി",
+          "1260° / 1260 ഡിഗ്രി"
+        ],
+        ans: 1
+      },
+      {
+        id: 53, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Find the Least Common Multiple (LCM) of 24, 36, and 40.",
+        qMl: "24, 36, 40 എന്നീ സംഖ്യകളുടെ ലഘുതമ സാധാരണ ഗുണിതം (LCM) കാണുക.",
+        opts: [
+          "180 / നൂറ്റിയെൺപത്",
+          "240 / ഇരുനൂറ്റിനാൽപ്പത്",
+          "360 / മുന്നൂറ്റിയറുപത്",
+          "720 / എഴുനൂറ്റിഇരുപത്"
+        ],
+        ans: 2
+      },
+      {
+        id: 54, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "What is the exact value of sin 30° + cos 60° + tan 45°?",
+        qMl: "sin 30° + cos 60° + tan 45° എന്നതിന്റെ കൃത്യമായ വില എത്രയാണ്?",
+        opts: [
+          "1 / ഒന്ന്",
+          "1.5 / ഒന്നര",
+          "2.5 / രണ്ടര",
+          "2 / രണ്ട്"
+        ],
+        ans: 3
+      },
+      {
+        id: 55, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "A merchant marks an article 25% above its cost price and then offers a 20% discount on the marked price. What is the net profit or loss percentage?",
+        qMl: "ഒരു കച്ചവടക്കാരൻ സാധനത്തിന് വാങ്ങിയ വിലയേക്കാൾ 25% അധികം വിലയിടുകയും തുടർന്ന് അതിൽ 20% ഡിസ്കൗണ്ട് നൽകുകയും ചെയ്തു. എങ്കിൽ മൊത്തത്തിലുള്ള ലാഭം അല്ലെങ്കിൽ നഷ്ടം എത്ര ശതമാനം?",
+        opts: [
+          "0% (No Profit, No Loss) / ലാഭവും നഷ്ടവുമില്ല",
+          "5% Profit / 5% ലാഭം",
+          "5% Loss / 5% നഷ്ടം",
+          "2.5% Loss / 2.5% നഷ്ടം"
+        ],
+        ans: 0
+      },
+      {
+        id: 56, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Find the area of a rhombus whose diagonals measure 16 cm and 12 cm.",
+        qMl: "വികർണ്ണങ്ങൾ 16 cm, 12 cm വീതമുള്ള ഒരു സമഭുജ സാമാന്തരികത്തിന്റെ (Rhombus) വിസ്തീർണ്ണം എത്രയാണ്?",
+        opts: [
+          "48 cm² / 48 ച.സെ.മീ",
+          "96 cm² / 96 ച.സെ.മീ",
+          "112 cm² / 112 ച.സെ.മീ",
+          "192 cm² / 192 ച.സെ.മീ"
+        ],
+        ans: 1
+      },
+      {
+        id: 57, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Two fair six-sided dice are rolled simultaneously. What is the probability that the sum of the two numbers is 9?",
+        qMl: "രണ്ട് പകിടകൾ ഒരേസമയം എറിയുമ്പോൾ കിട്ടുന്ന സംഖ്യകളുടെ തുക 9 ആകാനുള്ള സാധ്യത (Probability) എത്രയാണ്?",
+        opts: [
+          "1/6",
+          "1/12",
+          "1/9",
+          "5/36"
+        ],
+        ans: 2
+      },
+      {
+        id: 58, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "What is the 10th term of the Arithmetic Progression (AP): 5, 9, 13, 17, ...?",
+        qMl: "5, 9, 13, 17, ... എന്ന സമാന്തര ശ്രേണിയുടെ 10-ാം പദം ഏതാണ്?",
+        opts: [
+          "37",
+          "45",
+          "49",
+          "41"
+        ],
+        ans: 3
+      },
+      {
+        id: 59, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "If log₁₀(x) = 3, what is the value of log₁₀(x²)?",
+        qMl: "log₁₀(x) = 3 ആണെങ്കിൽ, log₁₀(x²) ന്റെ വില എത്രയാണ്?",
+        opts: [
+          "6 / ആറ്",
+          "5 / അഞ്ച്",
+          "9 / ഒൻപത്",
+          "1000 / ആയിരം"
+        ],
+        ans: 0
+      },
+      {
+        id: 60, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "A train 150 meters long crosses a stationary pole in 15 seconds. What is the train's speed in km/h?",
+        qMl: "150 മീറ്റർ നീളമുള്ള ഒരു ട്രെയിൻ ഒരു തൂണിനെ 15 സെക്കൻഡ് കൊണ്ട് കടന്നുപോകുന്നു. ട്രെയിനിന്റെ വേഗത മണിക്കൂറിൽ എത്ര കിലോമീറ്റർ (km/h) ആണ്?",
+        opts: [
+          "30 km/h / 30 കി.മീ/മണിക്കൂർ",
+          "36 km/h / 36 കി.മീ/മണിക്കൂർ",
+          "45 km/h / 45 കി.മീ/മണിക്കൂർ",
+          "54 km/h / 54 കി.മീ/മണിക്കൂർ"
+        ],
+        ans: 1
+      },
+      {
+        id: 61, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "If a + b = 10 and ab = 21, find the value of a² + b².",
+        qMl: "a + b = 10 ഉം ab = 21 ഉം ആണെങ്കിൽ, a² + b² ന്റെ വില കാണുക.",
+        opts: [
+          "48",
+          "68",
+          "58",
+          "79"
+        ],
+        ans: 2
+      },
+      {
+        id: 62, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Calculate the volume of a right circular cone with radius 3 cm and height 7 cm (use π = 22/7).",
+        qMl: "ആരം 3 cm ഉം ഉയരം 7 cm ഉം ഉള്ള ഒരു വൃത്തസ്തൂപികയുടെ (Cone) വ്യാപ്തം എത്രയാണ്? (π = 22/7)",
+        opts: [
+          "44 cm³ / 44 ഘന സെ.മീ",
+          "99 cm³ / 99 ഘന സെ.മീ",
+          "198 cm³ / 198 ഘന സെ.മീ",
+          "66 cm³ / 66 ഘന സെ.മീ"
+        ],
+        ans: 3
+      },
+      {
+        id: 63, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "In how many distinct ways can all the letters of the word 'MATHS' be arranged?",
+        qMl: "'MATHS' എന്ന വാക്കിലെ അക്ഷരങ്ങൾ ആകെ എത്ര വ്യത്യസ്ത രീതികളിൽ ക്രമീകരിക്കാം?",
+        opts: [
+          "120 / നൂറ്റിഇരുപത്",
+          "24 / ഇരുപത്തിനാല്",
+          "60 / അറുപത്",
+          "720 / എഴുനൂറ്റിഇരുപത്"
+        ],
+        ans: 0
+      },
+      {
+        id: 64, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Find the Simple Interest on ₹8,000 at 7.5% per annum for 4 years.",
+        qMl: "8,000 രൂപയ്ക്ക് 7.5% വാർഷിക നിരക്കിൽ 4 വർഷത്തേക്ക് ലഭിക്കുന്ന സാധാരണ പലിശ (Simple Interest) എത്ര രൂപയാണ്?",
+        opts: [
+          "₹1,800 / 1,800 രൂപ",
+          "₹2,400 / 2,400 രൂപ",
+          "₹2,200 / 2,200 രൂപ",
+          "₹2,600 / 2,600 രൂപ"
+        ],
+        ans: 1
+      },
+      {
+        id: 65, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "The interior angles of a triangle are in the ratio 2 : 3 : 4. What is the measure of the largest angle?",
+        qMl: "ഒരു ത്രികോണത്തിന്റെ കോണുകളുടെ അനുപാതം 2 : 3 : 4 ആണ്. ഇതിൽ ഏറ്റവും വലിയ കോണിന്റെ അളവ് എത്രയാണ്?",
+        opts: [
+          "60° / 60 ഡിഗ്രി",
+          "75° / 75 ഡിഗ്രി",
+          "80° / 80 ഡിഗ്രി",
+          "90° / 90 ഡിഗ്രി"
+        ],
+        ans: 2
+      },
+      {
+        id: 66, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "If 2^(x + 3) = 64, find the exact value of x.",
+        qMl: "2^(x + 3) = 64 ആണെങ്കിൽ, x ന്റെ കൃത്യമായ വില എത്രയാണ്?",
+        opts: [
+          "2 / രണ്ട്",
+          "4 / നാല്",
+          "5 / അഞ്ച്",
+          "3 / മൂന്ന്"
+        ],
+        ans: 3
+      },
+      {
+        id: 67, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "What is the median of the data set: 12, 7, 19, 4, 15, 10, 22?",
+        qMl: "12, 7, 19, 4, 15, 10, 22 എന്നീ സംഖ്യകളുടെ മധ്യമം (Median) എത്രയാണ്?",
+        opts: [
+          "12 / പന്ത്രണ്ട്",
+          "10 / പത്ത്",
+          "15 / പതിനഞ്ച്",
+          "13 / പതിമൂന്ന്"
+        ],
+        ans: 0
+      },
+      {
+        id: 68, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "A can complete a work in 12 days and B can complete the same work in 18 days. Working together, in how many days will they complete it?",
+        qMl: "A എന്നയാൾക്ക് ഒരു ജോലി 12 ദിവസം കൊണ്ടും B ക്ക് അതേ ജോലി 18 ദിവസം കൊണ്ടും തീർക്കാൻ കഴിയും. ഇരുവരും ഒരുമിച്ച് ചെയ്താൽ എത്ര ദിവസം കൊണ്ട് ജോലി തീരും?",
+        opts: [
+          "6.5 days / 6.5 ദിവസം",
+          "7.2 days / 7.2 ദിവസം",
+          "7.5 days / 7.5 ദിവസം",
+          "8 days / 8 ദിവസം"
+        ],
+        ans: 1
+      },
+      {
+        id: 69, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "What is the Euclidean distance between the coordinate points A(3, 4) and B(6, 8)?",
+        qMl: "A(3, 4), B(6, 8) എന്നീ ബിന്ദുക്കൾ തമ്മിലുള്ള അകലം എത്ര യൂണിറ്റാണ്?",
+        opts: [
+          "4 / നാല്",
+          "6 / ആറ്",
+          "5 / അഞ്ച്",
+          "7 / ഏഴ്"
+        ],
+        ans: 2
+      },
+      {
+        id: 70, subject: "Mathematics", type: "mcq", difficulty: "Medium",
+        qEn: "Find the sum of the first 20 positive odd integers (1 + 3 + 5 + ... + 39).",
+        qMl: "ആദ്യത്തെ 20 ഒറ്റസംഖ്യകളുടെ (1 + 3 + 5 + ... + 39) ആകെ തുക എത്രയാണ്?",
+        opts: [
+          "380",
+          "420",
+          "441",
+          "400"
+        ],
+        ans: 3
+      },
+
+      // ===================== MATHEMATICS: Q71–Q90 (MCQ — TIGHT) =====================
+      {
+        id: 71, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "If x + (1/x) = 5, find the exact value of x³ + (1/x³).",
+        qMl: "x + (1/x) = 5 ആണെങ്കിൽ, x³ + (1/x³) ന്റെ കൃത്യമായ വില എത്രയാണ്?",
+        opts: [
+          "110",
+          "100",
+          "115",
+          "125"
+        ],
+        ans: 0
+      },
+      {
+        id: 72, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "How many diagonals does a regular dodecagon (12-sided polygon) possess?",
+        qMl: "12 വശങ്ങളുള്ള ഒരു ബഹുഭുജത്തിന് (Dodecagon) ആകെ എത്ര വികർണ്ണങ്ങൾ (Diagonals) ഉണ്ടാകും?",
+        opts: [
+          "44",
+          "54",
+          "48",
+          "60"
+        ],
+        ans: 1
+      },
+      {
+        id: 73, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the remainder when 2⁵⁰ is divided by 7?",
+        qMl: "2⁵⁰ നെ 7 കൊണ്ട് ഹരിക്കുമ്പോൾ ലഭിക്കുന്ന ശിഷ്ടം (Remainder) എത്രയാണ്?",
+        opts: [
+          "1",
+          "2",
+          "4",
+          "6"
+        ],
+        ans: 2
+      },
+      {
+        id: 74, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "Find the sum of the infinite geometric series: 12 + 4 + 4/3 + 4/9 + ...",
+        qMl: "12 + 4 + 4/3 + 4/9 + ... എന്ന അനന്ത ഗുണോത്തര ശ്രേണിയുടെ തുക എത്രയാണ്?",
+        opts: [
+          "16",
+          "20",
+          "24",
+          "18"
+        ],
+        ans: 3
+      },
+      {
+        id: 75, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "How many trailing zeros appear at the end of 100! (100 factorial)?",
+        qMl: "100! (100 ഫാക്ടോറിയൽ) എന്ന സംഖ്യയുടെ അവസാനത്തിൽ ആകെ എത്ര പൂജ്യങ്ങൾ (Trailing Zeros) ഉണ്ടാകും?",
+        opts: [
+          "24",
+          "20",
+          "22",
+          "25"
+        ],
+        ans: 0
+      },
+      {
+        id: 76, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "If tan θ + cot θ = 4, what is the value of tan² θ + cot² θ?",
+        qMl: "tan θ + cot θ = 4 ആണെങ്കിൽ, tan² θ + cot² θ ന്റെ വില എത്രയാണ്?",
+        opts: [
+          "12",
+          "14",
+          "16",
+          "18"
+        ],
+        ans: 1
+      },
+      {
+        id: 77, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "A bag contains 5 red balls and 3 blue balls. If two balls are drawn at random without replacement, what is the probability that both are red?",
+        qMl: "ഒരു സഞ്ചിയിൽ 5 ചുവപ്പ് പന്തുകളും 3 നീല പന്തുകളുമുണ്ട്. തിരിച്ചിടാതെ രണ്ട് പന്തുകൾ എടുത്താൽ രണ്ടും ചുവപ്പാകാനുള്ള സാധ്യത എത്രയാണ്?",
+        opts: [
+          "25/64",
+          "3/14",
+          "5/14",
+          "5/16"
+        ],
+        ans: 2
+      },
+      {
+        id: 78, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the total number of positive divisors (factors) of 360?",
+        qMl: "360 എന്ന സംഖ്യയ്ക്ക് ആകെ എത്ര ഘടകങ്ങൾ (Positive Divisors) ഉണ്ട്?",
+        opts: [
+          "18",
+          "20",
+          "30",
+          "24"
+        ],
+        ans: 3
+      },
+      {
+        id: 79, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "If the quadratic equation x² − kx + 16 = 0 has real and equal roots, and k > 0, find k.",
+        qMl: "x² − kx + 16 = 0 എന്ന രണ്ടാം കൃതി സമവാക്യത്തിന്റെ പരിഹാരങ്ങൾ തുല്യവും യാഥാർത്ഥ്യവും ആണെങ്കിൽ (k > 0), k ന്റെ വില എത്ര?",
+        opts: [
+          "8",
+          "4",
+          "12",
+          "16"
+        ],
+        ans: 0
+      },
+      {
+        id: 80, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the exact area of an equilateral triangle whose side length is 8 cm?",
+        qMl: "ഒരു വശം 8 cm ആയ സമഭുജ ത്രികോണത്തിന്റെ കൃത്യമായ വിസ്തീർണ്ണം എത്രയാണ്?",
+        opts: [
+          "8√3 cm²",
+          "16√3 cm²",
+          "32√3 cm²",
+          "64√3 cm²"
+        ],
+        ans: 1
+      },
+      {
+        id: 81, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "If log₂(log₃(x)) = 2, find the value of x.",
+        qMl: "log₂(log₃(x)) = 2 ആണെങ്കിൽ, x ന്റെ വില എത്രയാണ്?",
+        opts: [
+          "27",
+          "64",
+          "81",
+          "243"
+        ],
+        ans: 2
+      },
+      {
+        id: 82, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "In a circle of radius 10 cm, a chord lies at a perpendicular distance of 6 cm from the center. What is the total length of the chord?",
+        qMl: "10 cm ആരമുള്ള ഒരു വൃത്തത്തിൽ, കേന്ദ്രത്തിൽ നിന്നും 6 cm അകലെയുള്ള ഞാണിന്റെ (Chord) ആകെ നീളം എത്രയാണ്?",
+        opts: [
+          "8 cm / 8 സെ.മീ",
+          "12 cm / 12 സെ.മീ",
+          "18 cm / 18 സെ.മീ",
+          "16 cm / 16 സെ.മീ"
+        ],
+        ans: 3
+      },
+      {
+        id: 83, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "How many 4-digit numbers divisible by 5 can be formed using the digits 1, 2, 3, 4, 5 without repetition?",
+        qMl: "1, 2, 3, 4, 5 എന്നീ അക്കങ്ങൾ ആവർത്തിക്കാതെ ഉപയോഗിച്ച് 5 കൊണ്ട് നിശ്ശേഷം ഹരിക്കാവുന്ന എത്ര നാലക്ക സംഖ്യകൾ നിർമ്മിക്കാം?",
+        opts: [
+          "24",
+          "12",
+          "36",
+          "48"
+        ],
+        ans: 0
+      },
+      {
+        id: 84, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the difference between Compound Interest (compounded annually) and Simple Interest on ₹10,000 for 2 years at 10% per annum?",
+        qMl: "10,000 രൂപയ്ക്ക് 10% വാർഷിക നിരക്കിൽ 2 വർഷത്തേക്കുള്ള കൂട്ടുപലിശയും സാധാരണ പലിശയും തമ്മിലുള്ള വ്യത്യാസം എത്രയാണ്?",
+        opts: [
+          "₹50 / 50 രൂപ",
+          "₹100 / 100 രൂപ",
+          "₹150 / 150 രൂപ",
+          "₹200 / 200 രൂപ"
+        ],
+        ans: 1
+      },
+      {
+        id: 85, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "Evaluate the derivative d/dx (x³ − 4x² + 7x) at x = 2.",
+        qMl: "f(x) = x³ − 4x² + 7x എന്ന ഫംഗ്ഷന്റെ അവകലജം (Derivative) x = 2 ആകുമ്പോൾ എത്രയാണ്?",
+        opts: [
+          "1",
+          "5",
+          "3",
+          "7"
+        ],
+        ans: 2
+      },
+      {
+        id: 86, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "Find the determinant |A| of the 2×2 matrix A = [[4, 3], [2, 5]].",
+        qMl: "A = [[4, 3], [2, 5]] എന്ന 2×2 മാട്രിക്സിന്റെ ഡിറ്റർമിനന്റ് (|A|) എത്രയാണ്?",
+        opts: [
+          "10",
+          "18",
+          "26",
+          "14"
+        ],
+        ans: 3
+      },
+      {
+        id: 87, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the acute angle between the hour hand and the minute hand of an analog clock at 3:30?",
+        qMl: "ഒരു ക്ലോക്കിൽ സമയം 3:30 ആകുമ്പോൾ മണിക്കൂർ സൂചിയും മിനിറ്റ് സൂചിയും തമ്മിലുള്ള ന്യൂനകോൺ (Acute Angle) എത്ര ഡിഗ്രി ആണ്?",
+        opts: [
+          "75° / 75 ഡിഗ്രി",
+          "60° / 60 ഡിഗ്രി",
+          "80° / 80 ഡിഗ്രി",
+          "90° / 90 ഡിഗ്രി"
+        ],
+        ans: 0
+      },
+      {
+        id: 88, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "What is the units (last) digit of 7²⁰²⁶?",
+        qMl: "7²⁰²⁶ എന്ന സംഖ്യയുടെ ഒറ്റയുടെ സ്ഥാനത്തെ അക്കം (Units Digit) ഏതാണ്?",
+        opts: [
+          "1",
+          "9",
+          "3",
+          "7"
+        ],
+        ans: 1
+      },
+      {
+        id: 89, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "If sin A = 3/5 where A is an acute angle, find the exact value of sin 2A.",
+        qMl: "A ഒരു ന്യൂനകോണും sin A = 3/5 ഉം ആണെങ്കിൽ, sin 2A യുടെ വില എത്രയാണ്?",
+        opts: [
+          "12/25",
+          "18/25",
+          "24/25",
+          "7/25"
+        ],
+        ans: 2
+      },
+      {
+        id: 90, subject: "Mathematics", type: "mcq", difficulty: "Tight",
+        qEn: "Pipe A fills a tank in 10 hours, Pipe B fills it in 15 hours, and Pipe C empties it in 30 hours. If all three pipes are opened simultaneously, how many hours will it take to fill the tank?",
+        qMl: "ഒരു ടാങ്ക് നിറയ്ക്കാൻ പൈപ്പ് A ക്ക് 10 മണിക്കൂറും B ക്ക് 15 മണിക്കൂറും വേണം; പൈപ്പ് C ക്ക് 30 മണിക്കൂർ കൊണ്ട് അത് കാലിയാക്കാം. മൂന്നും ഒരുമിച്ച് തുറന്നാൽ ടാങ്ക് നിറയാൻ എത്ര മണിക്കൂർ എടുക്കും?",
+        opts: [
+          "6 hours / 6 മണിക്കൂർ",
+          "8 hours / 8 മണിക്കൂർ",
+          "9 hours / 9 മണിക്കൂർ",
+          "7.5 hours / 7.5 മണിക്കൂർ"
+        ],
+        ans: 3
+      },
+
+      // ===================== MATHEMATICS: Q91–Q100 (WRITTEN — 5 MED, 5 TIGHT) =====================
+      {
+        id: 91, subject: "Mathematics", type: "written", difficulty: "Medium",
+        qEn: "Evaluate √625 + ∛27 and show the two intermediate root values.",
+        qMl: "√625 + ∛27 ന്റെ വില രണ്ട് മൂലങ്ങളും വേർതിരിച്ച് എഴുതി കണ്ടെത്തുക.",
+        modelAnswer: "√625 = 25 and ∛27 = 3, so 25 + 3 = 28."
+      },
+      {
+        id: 92, subject: "Mathematics", type: "written", difficulty: "Medium",
+        qEn: "Find the perimeter (in cm) of a square whose area is 144 cm². Show the side length.",
+        qMl: "144 cm² വിസ്തീർണ്ണമുള്ള ഒരു സമചതുരത്തിന്റെ ഒരു വശത്തിന്റെ നീളവും ചുറ്റളവും (സെ.മീ-ൽ) കാണുക.",
+        modelAnswer: "Side = √144 = 12 cm; Perimeter = 4 × 12 = 48 cm."
+      },
+      {
+        id: 93, subject: "Mathematics", type: "written", difficulty: "Medium",
+        qEn: "Write the next two numbers in the Fibonacci sequence: 1, 1, 2, 3, 5, 8, 13, 21, ___, ___",
+        qMl: "1, 1, 2, 3, 5, 8, 13, 21, ___, ___ എന്ന ഫിബൊനാച്ചി ശ്രേണിയിലെ അടുത്ത രണ്ട് സംഖ്യകൾ എഴുതുക.",
+        modelAnswer: "34 and 55 (13+21 = 34; 21+34 = 55)."
+      },
+      {
+        id: 94, subject: "Mathematics", type: "written", difficulty: "Medium",
+        qEn: "Which number is the only even prime number? Explain briefly why no other even number can be prime.",
+        qMl: "ഇരട്ടസംഖ്യയായ ഏക അഭാജ്യസംഖ്യ (Prime Number) ഏതാണ്? മറ്റൊരു ഇരട്ടസംഖ്യയും അഭാജ്യമാകാത്തത് എന്തുകൊണ്ട്?",
+        modelAnswer: "2 (രണ്ട്). Every even number greater than 2 is divisible by 2, so it has at least three divisors (1, 2, and itself)."
+      },
+      {
+        id: 95, subject: "Mathematics", type: "written", difficulty: "Medium",
+        qEn: "If 15% of a number is 45, find the number and also find 40% of that same number.",
+        qMl: "ഒരു സംഖ്യയുടെ 15% എന്നത് 45 ആണെങ്കിൽ, ആ സംഖ്യയും ആ സംഖ്യയുടെ 40% ഉം എത്രയാണെന്ന് കണ്ടെത്തുക.",
+        modelAnswer: "Number = (45 × 100) / 15 = 300; 40% of 300 = 120."
+      },
+      {
+        id: 96, subject: "Mathematics", type: "written", difficulty: "Tight",
+        qEn: "Using Gauss's formula n(n+1)/2, find the sum of all natural numbers from 1 to 50.",
+        qMl: "n(n+1)/2 എന്ന സൂത്രവാക്യം ഉപയോഗിച്ച് 1 മുതൽ 50 വരെയുള്ള എല്ലാ എണ്ണൽ സംഖ്യകളുടെയും തുക കാണുക.",
+        modelAnswer: "Sum = 50 × 51 / 2 = 25 × 51 = 1,275."
+      },
+      {
+        id: 97, subject: "Mathematics", type: "written", difficulty: "Tight",
+        qEn: "Calculate ⁸C₃ (the number of ways to choose a 3-member committee from 8 students).",
+        qMl: "8 വിദ്യാർത്ഥികളിൽ നിന്നും 3 പേരടങ്ങുന്ന ഒരു കമ്മിറ്റി തിരഞ്ഞെടുക്കാനുള്ള വഴികളുടെ എണ്ണം (⁸C₃) കണക്കാക്കുക.",
+        modelAnswer: "⁸C₃ = (8 × 7 × 6) / (3 × 2 × 1) = 56 ways."
+      },
+      {
+        id: 98, subject: "Mathematics", type: "written", difficulty: "Tight",
+        qEn: "If f(x) = 2x² − 3x + 5, compute the exact value of f(−2).",
+        qMl: "f(x) = 2x² − 3x + 5 ആണെങ്കിൽ, f(−2) ന്റെ കൃത്യമായ വില കണക്കാക്കുക.",
+        modelAnswer: "f(−2) = 2(4) − 3(−2) + 5 = 8 + 6 + 5 = 19."
+      },
+      {
+        id: 99, subject: "Mathematics", type: "written", difficulty: "Tight",
+        qEn: "State the smallest 3-digit prime number and the largest 2-digit prime number, and find their difference.",
+        qMl: "ഏറ്റവും ചെറിയ മൂന്നക്ക അഭാജ്യസംഖ്യയും ഏറ്റവും വലിയ രണ്ടക്ക അഭാജ്യസംഖ്യയും എഴുതി അവ തമ്മിലുള്ള വ്യത്യാസം കാണുക.",
+        modelAnswer: "Smallest 3-digit prime = 101; Largest 2-digit prime = 97; Difference = 101 − 97 = 4."
+      },
+      {
+        id: 100, subject: "Mathematics", type: "written", difficulty: "Tight",
+        qEn: "List the first six prime numbers and calculate their sum.",
+        qMl: "ആദ്യത്തെ ആറ് അഭാജ്യസംഖ്യകൾ എഴുതി അവയുടെ ആകെ തുക കണ്ടെത്തുക.",
+        modelAnswer: "First six primes: 2, 3, 5, 7, 11, 13; Sum = 2 + 3 + 5 + 7 + 11 + 13 = 41."
+      },
+
+      // ===================== GENERAL KNOWLEDGE: Q101–Q120 (MCQ — MEDIUM) =====================
+      {
+        id: 101, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which Article of the Indian Constitution abolishes 'Untouchability' and forbids its practice in any form?",
+        qMl: "ഇന്ത്യൻ ഭരണഘടനയിലെ ഏത് അനുച്ഛേദമാണ് (Article) 'അയിത്തം' പൂർണ്ണമായും നിരോധിക്കുന്നത്?",
+        opts: [
+          "Article 17 / അനുച്ഛേദം 17",
+          "Article 14 / അനുച്ഛേദം 14",
+          "Article 21 / അനുച്ഛേദം 21",
+          "Article 32 / അനുച്ഛേദം 32"
+        ],
+        ans: 0
+      },
+      {
+        id: 102, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Who was the first woman to win a Nobel Prize and the only person to win Nobel Prizes in two different scientific fields?",
+        qMl: "നോബൽ സമ്മാനം നേടിയ ആദ്യ വനിതയും രണ്ട് വ്യത്യസ്ത ശാസ്ത്രശാഖകളിൽ നോബൽ സമ്മാനം നേടിയ ഏക വ്യക്തിയും ആരാണ്?",
+        opts: [
+          "Rosalind Franklin / റോസലിൻഡ് ഫ്രാങ്ക്ലിൻ",
+          "Marie Curie / മേരി ക്യൂറി",
+          "Dorothy Hodgkin / ഡൊറോത്തി ഹോഡ്ജ്കിൻ",
+          "Ada Lovelace / അഡാ ലവ്‌ലേസ്"
+        ],
+        ans: 1
+      },
+      {
+        id: 103, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "In which year was the historic Temple Entry Proclamation (ക്ഷേത്രപ്രവേശന വിളംബരം) issued in Travancore?",
+        qMl: "തിരുവിതാംകൂറിൽ ചരിത്രപ്രസിദ്ധമായ ക്ഷേത്രപ്രവേശന വിളംബരം പുറപ്പെടുവിച്ച വർഷം ഏതാണ്?",
+        opts: [
+          "1924 / ആയിരത്തി തൊള്ളായിരത്തി ഇരുപത്തിനാല്",
+          "1931 / ആയിരത്തി തൊള്ളായിരത്തി മുപ്പത്തിയൊന്ന്",
+          "1936 / ആയിരത്തി തൊള്ളായിരത്തി മുപ്പത്തിയാറ്",
+          "1947 / ആയിരത്തി തൊള്ളായിരത്തി നാൽപ്പത്തിയേഴ്"
+        ],
+        ans: 2
+      },
+      {
+        id: 104, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Where is the headquarters of the International Court of Justice (ICJ) located?",
+        qMl: "അന്താരാഷ്ട്ര നീതിന്യായ കോടതിയുടെ (ICJ) ആസ്ഥാനം എവിടെയാണ്?",
+        opts: [
+          "Geneva, Switzerland / ജനീവ",
+          "New York, USA / ന്യൂയോർക്ക്",
+          "Vienna, Austria / വിയന്ന",
+          "The Hague, Netherlands / ദി ഹേഗ്"
+        ],
+        ans: 3
+      },
+      {
+        id: 105, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which is the longest river flowing through the state of Kerala?",
+        qMl: "കേരളത്തിലൂടെ ഒഴുകുന്ന ഏറ്റവും നീളമേറിയ നദി ഏതാണ്?",
+        opts: [
+          "Periyar / പെരിയാർ",
+          "Bharathapuzha / ഭാരതപ്പുഴ",
+          "Pamba / പമ്പ",
+          "Chaliyar / ചാലിയാർ"
+        ],
+        ans: 0
+      },
+      {
+        id: 106, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Who authored the famous book 'The Discovery of India' while imprisoned at Ahmednagar Fort?",
+        qMl: "അഹമ്മദ്നഗർ കോട്ടയിലെ തടവുവാസത്തിനിടെ 'ദി ഡിസ്കവറി ഓഫ് ഇന്ത്യ' എന്ന പ്രശസ്ത ഗ്രന്ഥം രചിച്ചത് ആരാണ്?",
+        opts: [
+          "Mahatma Gandhi / മഹാത്മാഗാന്ധി",
+          "Jawaharlal Nehru / ജവഹർലാൽ നെഹ്റു",
+          "Maulana Abul Kalam Azad / മൗലാന അബുൽ കലാം ആസാദ്",
+          "Dr. B. R. Ambedkar / ഡോ. ബി. ആർ. അംബേദ്കർ"
+        ],
+        ans: 1
+      },
+      {
+        id: 107, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which narrow strait separates India from Sri Lanka?",
+        qMl: "ഇന്ത്യയെയും ശ്രീലങ്കയെയും വേർതിരിക്കുന്ന കടലിടുക്ക് ഏതാണ്?",
+        opts: [
+          "Malacca Strait / മലാക്ക കടലിടുക്ക്",
+          "Strait of Hormuz / ഹോർമുസ് കടലിടുക്ക്",
+          "Palk Strait / പാക്ക് കടലിടുക്ക്",
+          "Bering Strait / ബെറിംഗ് കടലിടുക്ക്"
+        ],
+        ans: 2
+      },
+      {
+        id: 108, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Who is celebrated as the 'Missile Man of India' and served as the 11th President of India?",
+        qMl: "'ഇന്ത്യയുടെ മിസൈൽ മാൻ' എന്നറിയപ്പെടുന്ന ഇന്ത്യയുടെ പതിനൊന്നാമത് രാഷ്ട്രപതി ആരാണ്?",
+        opts: [
+          "Vikram Sarabhai / വിക്രം സാരാഭായ്",
+          "Homi J. Bhabha / ഹോമി ജെ. ഭാഭ",
+          "Satish Dhawan / സതീഷ് ധവാൻ",
+          "Dr. A. P. J. Abdul Kalam / ഡോ. എ. പി. ജെ. അബ്ദുൽ കലാം"
+        ],
+        ans: 3
+      },
+      {
+        id: 109, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which social reformer founded the 'Sadhujana Paripalana Sangham' (SJPS) in Kerala in 1907?",
+        qMl: "1907-ൽ കേരളത്തിൽ 'സാധുജന പരിപാലന സംഘം' സ്ഥാപിച്ച നവോത്ഥാന നായകൻ ആരാണ്?",
+        opts: [
+          "Ayyankali / അയ്യങ്കാളി",
+          "Sree Narayana Guru / ശ്രീനാരായണ ഗുരു",
+          "Chattampi Swamikal / ചട്ടമ്പിസ്വാമികൾ",
+          "Vakkom Moulavi / വക്കം മൗലവി"
+        ],
+        ans: 0
+      },
+      {
+        id: 110, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "In which year was the Reserve Bank of India (RBI) established based on the Hilton Young Commission recommendations?",
+        qMl: "ഹിൽട്ടൺ യംഗ് കമ്മീഷന്റെ ശുപാർശ പ്രകാരം റിസർവ് ബാങ്ക് ഓഫ് ഇന്ത്യ (RBI) സ്ഥാപിതമായ വർഷം ഏതാണ്?",
+        opts: [
+          "1929",
+          "1935",
+          "1949",
+          "1951"
+        ],
+        ans: 1
+      },
+      {
+        id: 111, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which continent contains the highest number of sovereign countries?",
+        qMl: "ഏറ്റവും കൂടുതൽ പരമാധികാര രാജ്യങ്ങളുള്ള ഭൂഖണ്ഡം ഏതാണ്?",
+        opts: [
+          "Asia / ഏഷ്യ",
+          "Europe / യൂറോപ്പ്",
+          "Africa / ആഫ്രിക്ക",
+          "South America / തെക്കേ അമേരിക്ക"
+        ],
+        ans: 2
+      },
+      {
+        id: 112, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Who became the very first recipient of India's Jnanpith Award in 1965 for his Malayalam poetry collection 'Odakkuzhal'?",
+        qMl: "1965-ൽ 'ഓടക്കുഴൽ' എന്ന കൃതിക്ക് ഇന്ത്യയിലെ ആദ്യ ജ്ഞാനപീഠ പുരസ്കാരം നേടിയ മലയാളി കവി ആരാണ്?",
+        opts: [
+          "Thakazhi Sivasankara Pillai / തകഴി ശിവശങ്കരപ്പിള്ള",
+          "S. K. Pottekkatt / എസ്. കെ. പൊറ്റെക്കാട്ട്",
+          "M. T. Vasudevan Nair / എം. ടി. വാസുദേവൻ നായർ",
+          "G. Sankara Kurup / ജി. ശങ്കരക്കുറുപ്പ്"
+        ],
+        ans: 3
+      },
+      {
+        id: 113, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which United Nations agency publishes the annual Human Development Index (HDI)?",
+        qMl: "വാർഷിക 'മാനവ വികസന സൂചിക' (HDI) പ്രസിദ്ധീകരിക്കുന്ന ഐക്യരാഷ്ട്രസഭാ ഏജൻസി ഏതാണ്?",
+        opts: [
+          "UNDP / യു.എൻ.ഡി.പി",
+          "World Bank / ലോകബാങ്ക്",
+          "IMF / ഐ.എം.എഫ്",
+          "UNESCO / യുനെസ്കോ"
+        ],
+        ans: 0
+      },
+      {
+        id: 114, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "The historic Battle of Plassey, which laid the foundation of British East India Company rule in Bengal, was fought in:",
+        qMl: "ബംഗാളിൽ ബ്രിട്ടീഷ് ഈസ്റ്റ് ഇന്ത്യാ കമ്പനിയുടെ ഭരണത്തിന് അടിത്തറയിട്ട പ്ലാസി യുദ്ധം നടന്ന വർഷം ഏതാണ്?",
+        opts: [
+          "1764",
+          "1757",
+          "1799",
+          "1857"
+        ],
+        ans: 1
+      },
+      {
+        id: 115, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which desert is the largest hot desert in the world?",
+        qMl: "ലോകത്തിലെ ഏറ്റവും വലിയ ഉഷ്ണ മരുഭൂമി ഏതാണ്?",
+        opts: [
+          "Gobi Desert / ഗോബി മരുഭൂമി",
+          "Kalahari Desert / കലഹാരി മരുഭൂമി",
+          "Sahara Desert / സഹാറ മരുഭൂമി",
+          "Thar Desert / താർ മരുഭൂമി"
+        ],
+        ans: 2
+      },
+      {
+        id: 116, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Fundamental Duties (Article 51A) were incorporated into the Indian Constitution on the recommendation of which committee?",
+        qMl: "ഇന്ത്യൻ ഭരണഘടനയിൽ മൗലിക കർത്തവ്യങ്ങൾ (Article 51A) കൂട്ടിച്ചേർത്തത് ഏത് കമ്മിറ്റിയുടെ ശുപാർശ പ്രകാരമാണ്?",
+        opts: [
+          "Sarkaria Commission / സർക്കാരിയ കമ്മീഷൻ",
+          "Balwant Rai Mehta Committee / ബൽവന്ത് റായ് മേത്ത കമ്മിറ്റി",
+          "Mandal Commission / മണ്ഡൽ കമ്മീഷൻ",
+          "Swaran Singh Committee / സ്വരൺ സിംഗ് കമ്മിറ്റി"
+        ],
+        ans: 3
+      },
+      {
+        id: 117, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which country is traditionally known as the 'Land of the Rising Sun'?",
+        qMl: "'ഉദയസൂര്യന്റെ നാട്' എന്നറിയപ്പെടുന്ന രാജ്യം ഏതാണ്?",
+        opts: [
+          "Japan / ജപ്പാൻ",
+          "South Korea / ദക്ഷിണ കൊറിയ",
+          "Thailand / തായ്‌ലൻഡ്",
+          "Norway / നോർവേ"
+        ],
+        ans: 0
+      },
+      {
+        id: 118, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Who founded the famous reformist newspaper 'Swadeshabhimani' in Kerala in 1905?",
+        qMl: "1905-ൽ കേരളത്തിൽ 'സ്വദേശാഭിമാനി' എന്ന പ്രശസ്ത പത്രം സ്ഥാപിച്ചത് ആരാണ്?",
+        opts: [
+          "K. Ramakrishna Pillai / കെ. രാമകൃഷ്ണപിള്ള",
+          "Vakkom Abdul Khader Moulavi / വക്കം അബ്ദുൽ ഖാദർ മൗലവി",
+          "K. Kelappan / കെ. കേളപ്പൻ",
+          "C. Kesavan / സി. കേശവൻ"
+        ],
+        ans: 1
+      },
+      {
+        id: 119, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "Which city hosted the 2024 Summer Olympic Games?",
+        qMl: "2024-ലെ വേനൽക്കാല ഒളിമ്പിക്സ് ഗെയിംസിന് ആതിഥേയത്വം വഹിച്ച നഗരം ഏതാണ്?",
+        opts: [
+          "Tokyo / ടോക്കിയോ",
+          "Los Angeles / ലോസ് ഏഞ്ചൽസ്",
+          "Paris / പാരീസ്",
+          "London / ലണ്ടൻ"
+        ],
+        ans: 2
+      },
+      {
+        id: 120, subject: "General Knowledge", type: "mcq", difficulty: "Medium",
+        qEn: "India celebrates National Science Day on February 28 every year to commemorate the discovery made by:",
+        qMl: "ഇന്ത്യയിൽ ഫെബ്രുവരി 28 ദേശീയ ശാസ്ത്രദിനമായി ആചരിക്കുന്നത് ആരുടെ കണ്ടുപിടുത്തത്തിന്റെ ഓർമ്മയ്ക്കായാണ്?",
+        opts: [
+          "Srinivasa Ramanujan / ശ്രീനിവാസ രാമാനുജൻ",
+          "Jagadish Chandra Bose / ജഗദീഷ് ചന്ദ്രബോസ്",
+          "Satyendra Nath Bose / സത്യേന്ദ്ര നാഥ് ബോസ്",
+          "Sir C. V. Raman / സർ സി. വി. രാമൻ"
+        ],
+        ans: 3
+      },
+
+      // ===================== GENERAL KNOWLEDGE: Q121–Q140 (MCQ — TIGHT) =====================
+      {
+        id: 121, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which Constitutional Amendment Act of 1976 is popularly termed the 'Mini Constitution' of India?",
+        qMl: "1976-ൽ വരുത്തിയ വിപുലമായ മാറ്റങ്ങൾ കാരണം ഇന്ത്യയുടെ 'മിനി ഭരണഘടന' എന്നറിയപ്പെടുന്ന ഭരണഘടനാ ഭേദഗതി ഏതാണ്?",
+        opts: [
+          "42nd Amendment / 42-ാം ഭേദഗതി",
+          "44th Amendment / 44-ാം ഭേദഗതി",
+          "73rd Amendment / 73-ാം ഭേദഗതി",
+          "86th Amendment / 86-ാം ഭേദഗതി"
+        ],
+        ans: 0
+      },
+      {
+        id: 122, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "The landmark 1973 Supreme Court judgment in 'Kesavananda Bharati vs. State of Kerala' propounded which constitutional doctrine?",
+        qMl: "1973-ലെ 'കേശവാനന്ദ ഭാരതി vs കേരള സ്റ്റേറ്റ്' സുപ്രീം കോടതി വിധിയിലൂടെ സ്ഥാപിതമായ പ്രധാന ഭരണഘടനാ സിദ്ധാന്തം ഏതാണ്?",
+        opts: [
+          "Doctrine of Eclipse / ഗ്രഹണ സിദ്ധാന്തം",
+          "Basic Structure Doctrine / അടിസ്ഥാന ഘടനാ സിദ്ധാന്തം",
+          "Doctrine of Lapse / ദത്തവകാശ നിരോധന നിയമം",
+          "Doctrine of Severability / വേർതിരിക്കൽ സിദ്ധാന്തം"
+        ],
+        ans: 1
+      },
+      {
+        id: 123, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "At the Battle of Colachel (1741), the Travancore army led by Marthanda Varma defeated which European colonial power?",
+        qMl: "1741-ലെ കുളച്ചൽ യുദ്ധത്തിൽ മാർത്താണ്ഡവർമ്മയുടെ നേതൃത്വത്തിലുള്ള തിരുവിതാംകൂർ സൈന്യം ഏത് യൂറോപ്യൻ ശക്തിയെയാണ് പരാജയപ്പെടുത്തിയത്?",
+        opts: [
+          "Portuguese / പോർച്ചുഗീസുകാർ",
+          "French / ഫ്രഞ്ചുകാർ",
+          "Dutch (VOC) / ഡച്ചുകാർ",
+          "British / ബ്രിട്ടീഷുകാർ"
+        ],
+        ans: 2
+      },
+      {
+        id: 124, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Who authored 'Arthashastra', the celebrated ancient Indian treatise on statecraft, economic policy, and military strategy?",
+        qMl: "രാജ്യതന്ത്രം, സാമ്പത്തിക ശാസ്ത്രം, യുദ്ധതന്ത്രം എന്നിവ പ്രതിപാദിക്കുന്ന പ്രശസ്ത പുരാതന ഗ്രന്ഥമായ 'അർത്ഥശാസ്ത്രം' രചിച്ചത് ആരാണ്?",
+        opts: [
+          "Panini / പാണിനി",
+          "Patanjali / പതഞ്ജലി",
+          "Kalidasa / കാളിദാസൻ",
+          "Kautilya (Chanakya) / കൗടില്യൻ (ചാണക്യൻ)"
+        ],
+        ans: 3
+      },
+      {
+        id: 125, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which constitutional writ literally translates to 'We Command' and compels a public authority to perform its legal duty?",
+        qMl: "'ഞങ്ങൾ ആജ്ഞാപിക്കുന്നു' എന്നർത്ഥം വരുന്നതും ഒരു പൊതു അധികാരിയോട് നിയമപരമായ കൃത്യം നിർവഹിക്കാൻ കോടതി പുറപ്പെടുവിക്കുന്നതുമായ റിട്ട് ഏതാണ്?",
+        opts: [
+          "Mandamus / മാൻഡമസ്",
+          "Habeas Corpus / ഹേബിയസ് കോർപ്പസ്",
+          "Quo Warranto / ക്വോ വാറന്റോ",
+          "Certiorari / സെർഷ്യോററി"
+        ],
+        ans: 0
+      },
+      {
+        id: 126, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which 16th-century historical chronicle documenting Malabar's resistance against Portuguese colonialism was authored by Sheikh Zainuddin Makhdoom II?",
+        qMl: "പോർച്ചുഗീസ് അധിനിവേശത്തിനെതിരെയുള്ള മലബാറിന്റെ ചെറുത്തുനിൽപ്പിനെക്കുറിച്ച് ശൈഖ് സൈനുദ്ദീൻ മഖ്ദൂം രണ്ടാമൻ രചിച്ച ചരിത്രഗ്രന്ഥം ഏതാണ്?",
+        opts: [
+          "Kitab-ul-Hind / കിതാബുൽ ഹിന്ദ്",
+          "Tuhfat al-Mujahidin / തുഹ്ഫത്തുൽ മുജാഹിദീൻ",
+          "Rihla / രിഹ്‌ല",
+          "Keralolpathi / കേരളോൽപ്പത്തി"
+        ],
+        ans: 1
+      },
+      {
+        id: 127, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "What is the macroeconomic term for a condition combining high inflation, stagnant economic growth, and high unemployment?",
+        qMl: "ഉയർന്ന പണപ്പെരുപ്പവും സാമ്പത്തിക മാന്ദ്യവും ഉയർന്ന തൊഴിലില്ലായ്മയും ഒരേസമയം സംഭവിക്കുന്ന സാമ്പത്തിക അവസ്ഥ ഏതാണ്?",
+        opts: [
+          "Deflation / പണച്ചുരുക്കം",
+          "Hyperinflation / അതിപണപ്പെരുപ്പം",
+          "Stagflation / സ്റ്റാഗ്ഫ്ലേഷൻ",
+          "Reflation / റീഫ്ലേഷൻ"
+        ],
+        ans: 2
+      },
+      {
+        id: 128, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "The 1944 Bretton Woods Conference resulted in the establishment of which twin international financial institutions?",
+        qMl: "1944-ലെ ബ്രെട്ടൻ വുഡ്സ് സമ്മേളനത്തിലൂടെ രൂപീകരിക്കപ്പെട്ട രണ്ട് അന്താരാഷ്ട്ര ധനകാര്യ സ്ഥാപനങ്ങൾ ഏവയാണ്?",
+        opts: [
+          "WTO and ADB / ഡബ്ല്യു.ടി.ഒ & എ.ഡി.ബി",
+          "UNCTAD and OECD / അങ്ക്റ്റാഡ് & ഒ.ഇ.സി.ഡി",
+          "BIS and NDB / ബി.ഐ.എസ് & എൻ.ഡി.ബി",
+          "IMF and World Bank (IBRD) / ഐ.എം.എഫ് & ലോകബാങ്ക്"
+        ],
+        ans: 3
+      },
+      {
+        id: 129, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which major line of latitude divides India into nearly two equal halves, passing through 8 Indian states?",
+        qMl: "ഇന്ത്യയിലെ 8 സംസ്ഥാനങ്ങളിലൂടെ കടന്നുപോകുന്ന പ്രധാന അക്ഷാംശരേഖ ഏതാണ്?",
+        opts: [
+          "Tropic of Cancer (23.5° N) / ഉത്തരായനരേഖ",
+          "Equator (0°) / ഭൂമധ്യരേഖ",
+          "Tropic of Capricorn (23.5° S) / ദക്ഷിണായനരേഖ",
+          "Arctic Circle / ആർട്ടിക് വൃത്തം"
+        ],
+        ans: 0
+      },
+      {
+        id: 130, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "During which Mughal emperor's reign did court historian Abul Fazl compile 'Ain-i-Akbari'?",
+        qMl: "കൊട്ടാരം ചരിത്രകാരനായ അബുൽ ഫസൽ 'ഐൻ-ഇ-അക്ബരി' രചിച്ചത് ഏത് മുഗൾ ചക്രവർത്തിയുടെ ഭരണകാലത്താണ്?",
+        opts: [
+          "Babur / ബാബർ",
+          "Akbar / അക്ബർ",
+          "Shah Jahan / ഷാജഹാൻ",
+          "Aurangzeb / ഔറംഗസീബ്"
+        ],
+        ans: 1
+      },
+      {
+        id: 131, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which landmark 1987 international environmental protocol successfully phased out ozone-depleting CFCs?",
+        qMl: "ഓസോൺ പാളിയെ നശിപ്പിക്കുന്ന സി.എഫ്.സി വാതകങ്ങളുടെ ഉപയോഗം നിയന്ത്രിക്കാൻ 1987-ൽ ഒപ്പുവെച്ച അന്താരാഷ്ട്ര ഉടമ്പടി ഏതാണ്?",
+        opts: [
+          "Kyoto Protocol / ക്യോട്ടോ പ്രോട്ടോക്കോൾ",
+          "Paris Agreement / പാരീസ് ഉടമ്പടി",
+          "Montreal Protocol / മോൺട്രിയൽ പ്രോട്ടോക്കോൾ",
+          "Basel Convention / ബാസൽ കൺവെൻഷൻ"
+        ],
+        ans: 2
+      },
+      {
+        id: 132, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Who presided over the historic 1929 Lahore Session of the Indian National Congress that adopted the 'Purna Swaraj' resolution?",
+        qMl: "'പൂർണ്ണ സ്വരാജ്' പ്രമേയം അംഗീകരിച്ച 1929-ലെ ലാഹോർ കോൺഗ്രസ് സമ്മേളനത്തിന്റെ അധ്യക്ഷൻ ആരായിരുന്നു?",
+        opts: [
+          "Subhas Chandra Bose / സുഭാഷ് ചന്ദ്രബോസ്",
+          "Sardar Vallabhbhai Patel / സർദാർ വല്ലഭായ് പട്ടേൽ",
+          "Motilal Nehru / മോത്തിലാൽ നെഹ്റു",
+          "Jawaharlal Nehru / ജവഹർലാൽ നെഹ്റു"
+        ],
+        ans: 3
+      },
+      {
+        id: 133, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "In economics, the 'Gini Coefficient' is a statistical measure primarily used to quantify:",
+        qMl: "സാമ്പത്തിക ശാസ്ത്രത്തിൽ 'ഗിനി ഗുണാങ്കം' (Gini Coefficient) പ്രധാനമായും എന്ത് അളക്കാനാണ് ഉപയോഗിക്കുന്നത്?",
+        opts: [
+          "Income or Wealth Inequality / വരുമാന അല്ലെങ്കിൽ സമ്പത്ത് അസമത്വം",
+          "Inflation Rate / പണപ്പെരുപ്പ നിരക്ക്",
+          "GDP Growth Rate / ജി.ഡി.പി വളർച്ചാ നിരക്ക്",
+          "Foreign Exchange Reserves / വിദേശനാണ്യ ശേഖരം"
+        ],
+        ans: 0
+      },
+      {
+        id: 134, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which UNESCO World Heritage Site located in Patan, Gujarat, is celebrated for its intricate subterranean stepwell architecture and appears on India's ₹100 banknote?",
+        qMl: "ഗുജറാത്തിലെ പട്ടാനിൽ സ്ഥിതി ചെയ്യുന്നതും ഇന്ത്യയുടെ 100 രൂപ നോട്ടിൽ ആലേഖനം ചെയ്തിട്ടുള്ളതുമായ യുനെസ്കോ പൈതൃക പടിക്കിണർ ഏതാണ്?",
+        opts: [
+          "Chand Baori / ചാന്ദ് ബാവോറി",
+          "Rani ki Vav / റാണി കി വാവ്",
+          "Adalaj Stepwell / അദാലജ് സ്റ്റെപ്പ്‌വെൽ",
+          "Agrasen ki Baoli / അഗ്രസെൻ കി ബാവോലി"
+        ],
+        ans: 1
+      },
+      {
+        id: 135, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which mathematician of Indian origin won the prestigious Fields Medal in 2014 for his breakthroughs in the geometry of numbers?",
+        qMl: "സംഖ്യകളുടെ ജ്യാമിതിയിലെ സംഭാവനകൾക്ക് 2014-ൽ ഗണിതശാസ്ത്രത്തിലെ 'ഫീൽഡ്സ് മെഡൽ' നേടിയ ഇന്ത്യൻ വംശജനായ ഗണിതശാസ്ത്രജ്ഞൻ ആരാണ്?",
+        opts: [
+          "Akshay Venkatesh / അക്ഷയ് വെങ്കിടേഷ്",
+          "C. R. Rao / സി. ആർ. റാവു",
+          "Manjul Bhargava / മഞ്ജുൾ ഭാർഗവ",
+          "Harish-Chandra / ഹരീഷ്-ചന്ദ്ര"
+        ],
+        ans: 2
+      },
+      {
+        id: 136, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "The Palakkad Gap, a major geographic pass connecting Kerala and Tamil Nadu, cuts across which mountain range?",
+        qMl: "കേരളത്തെയും തമിഴ്‌നാടിനെയും ബന്ധിപ്പിക്കുന്ന പ്രധാന ചുരമായ 'പാലക്കാട് ചുരം' ഏത് പർവ്വതനിരയിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        opts: [
+          "Eastern Ghats / പൂർവ്വഘട്ടം",
+          "Vindhya Range / വിന്ധ്യ പർവ്വതനിര",
+          "Aravalli Range / ആരവല്ലി നിര",
+          "Western Ghats / പശ്ചിമഘട്ടം"
+        ],
+        ans: 3
+      },
+      {
+        id: 137, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which famous 14th-century Moroccan traveler visited Kozhikode (Calicut) and wrote extensively about Kerala in his travelogue 'Rihla'?",
+        qMl: "14-ാം നൂറ്റാണ്ടിൽ കോഴിക്കോട് സന്ദർശിക്കുകയും തന്റെ 'രിഹ്‌ല' എന്ന യാത്രാവിവരണത്തിൽ കേരളത്തെക്കുറിച്ച് എഴുതുകയും ചെയ്ത മൊറോക്കൻ സഞ്ചാരി ആരാണ്?",
+        opts: [
+          "Ibn Battuta / ഇബ്നു ബത്തൂത്ത",
+          "Al-Biruni / അൽ-ബിറൂനി",
+          "Marco Polo / മാർക്കോ പോളോ",
+          "Niccolò de' Conti / നിക്കോളോ കോണ്ടി"
+        ],
+        ans: 0
+      },
+      {
+        id: 138, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which Schedule of the Indian Constitution lists the 22 officially recognized languages of India?",
+        qMl: "ഇന്ത്യൻ ഭരണഘടനയിലെ ഏത് പട്ടികയിലാണ് (Schedule) അംഗീകൃതമായ 22 ഔദ്യോഗിക ഭാഷകൾ ഉൾപ്പെടുത്തിയിരിക്കുന്നത്?",
+        opts: [
+          "Sixth Schedule / ആറാം പട്ടിക",
+          "Eighth Schedule / എട്ടാം പട്ടിക",
+          "Seventh Schedule / ഏഴാം പട്ടിക",
+          "Tenth Schedule / പത്താം പട്ടിക"
+        ],
+        ans: 1
+      },
+      {
+        id: 139, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which Nordic country formally became the 32nd member state of NATO in March 2024?",
+        qMl: "2024 മാർച്ചിൽ നാറ്റോയുടെ (NATO) 32-ാമത് അംഗരാജ്യമായി മാറിയത് ഏത് രാജ്യമാണ്?",
+        opts: [
+          "Finland / ഫിൻലൻഡ്",
+          "Ukraine / യുക്രെയ്ൻ",
+          "Sweden / സ്വീഡൻ",
+          "Austria / ഓസ്ട്രിയ"
+        ],
+        ans: 2
+      },
+      {
+        id: 140, subject: "General Knowledge", type: "mcq", difficulty: "Tight",
+        qEn: "Which Nobel Prize category was NOT established by Alfred Nobel's 1895 will and was introduced later in 1968 by Sveriges Riksbank?",
+        qMl: "ആൽഫ്രഡ് നോബലിന്റെ 1895-ലെ വിൽപ്പത്രത്തിൽ ഇല്ലാതിരുന്നതും 1968-ൽ സ്വീഡിഷ് സെൻട്രൽ ബാങ്ക് പുതുതായി ഏർപ്പെടുത്തിയതുമായ നോബൽ പുരസ്കാര വിഭാഗം ഏതാണ്?",
+        opts: [
+          "Peace / സമാധാനം",
+          "Literature / സാഹിത്യം",
+          "Physiology or Medicine / വൈദ്യശാസ്ത്രം",
+          "Economic Sciences / സാമ്പത്തിക ശാസ്ത്രം"
+        ],
+        ans: 3
+      },
+
+      // ===================== GENERAL KNOWLEDGE: Q141–Q150 (WRITTEN — 5 MED, 5 TIGHT) =====================
+      {
+        id: 141, subject: "General Knowledge", type: "written", difficulty: "Medium",
+        qEn: "Who served as the Chairman of the Drafting Committee of the Indian Constitution, and on what date was the Constitution adopted?",
+        qMl: "ഇന്ത്യൻ ഭരണഘടനയുടെ ഡ്രാഫ്റ്റിംഗ് കമ്മിറ്റി ചെയർമാൻ ആരായിരുന്നു? ഭരണഘടന അംഗീകരിച്ച തീയതി ഏതാണ്?",
+        modelAnswer: "Dr. B. R. Ambedkar (ഡോ. ബി. ആർ. അംബേദ്കർ); Adopted on November 26, 1949 (1949 നവംബർ 26)."
+      },
+      {
+        id: 142, subject: "General Knowledge", type: "written", difficulty: "Medium",
+        qEn: "Write the capital city of Australia and name the ocean situated to its west.",
+        qMl: "ഓസ്ട്രേലിയയുടെ തലസ്ഥാന നഗരവും അതിന്റെ പടിഞ്ഞാറ് ഭാഗത്തുള്ള മഹാസമുദ്രവും എഴുതുക.",
+        modelAnswer: "Capital: Canberra (കാൻബറ); Ocean to the west: Indian Ocean (ഇന്ത്യൻ മഹാസമുദ്രം)."
+      },
+      {
+        id: 143, subject: "General Knowledge", type: "written", difficulty: "Medium",
+        qEn: "Name the highest peak in Kerala (and South India) and the district in which it is located.",
+        qMl: "കേരളത്തിലെയും ദക്ഷിണേന്ത്യയിലെയും ഏറ്റവും ഉയരം കൂടിയ കൊടുമുടിയുടെ പേരും അത് സ്ഥിതി ചെയ്യുന്ന ജില്ലയും എഴുതുക.",
+        modelAnswer: "Anamudi (ആനമുടി, 2,695 m) — located in Idukki district (ഇടുക്കി ജില്ല)."
+      },
+      {
+        id: 144, subject: "General Knowledge", type: "written", difficulty: "Medium",
+        qEn: "Which Indian state has the longest mainland coastline, and which sea borders it?",
+        qMl: "ഇന്ത്യയിൽ ഏറ്റവും നീളമുള്ള കടൽത്തീരമുള്ള സംസ്ഥാനം ഏതാണ്? ആ സംസ്ഥാനത്തിന് അതിരിടുന്ന കടൽ ഏതാണ്?",
+        modelAnswer: "Gujarat (ഗുജറാത്ത്) — bordered by the Arabian Sea (അറബിക്കടൽ)."
+      },
+      {
+        id: 145, subject: "General Knowledge", type: "written", difficulty: "Medium",
+        qEn: "Who wrote India's National Anthem 'Jana Gana Mana', and in which language was it originally composed?",
+        qMl: "ഇന്ത്യയുടെ ദേശീയഗാനമായ 'ജനഗണമന' രചിച്ചത് ആരാണ്? ഏത് ഭാഷയിലാണ് ഇത് ആദ്യം രചിക്കപ്പെട്ടത്?",
+        modelAnswer: "Rabindranath Tagore (രബീന്ദ്രനാഥ ടാഗോർ); originally composed in highly Sanskritized Bengali (ബംഗാളി)."
+      },
+      {
+        id: 146, subject: "General Knowledge", type: "written", difficulty: "Tight",
+        qEn: "On what exact date was the modern State of Kerala formed under the States Reorganisation Act, and which three regions were merged?",
+        qMl: "സംസ്ഥാന പുനഃസംഘടനാ നിയമപ്രകാരം കേരള സംസ്ഥാനം രൂപീകൃതമായ കൃത്യമായ തീയതിയും ഏതൊക്കെ പ്രദേശങ്ങൾ സംയോജിപ്പിച്ചാണ് കേരളം രൂപീകരിച്ചതെന്നും എഴുതുക.",
+        modelAnswer: "November 1, 1956 (1956 നവംബർ 1) — merging Travancore (തിരുവിതാംകൂർ), Cochin (കൊച്ചി), and Malabar (മലബാർ)."
+      },
+      {
+        id: 147, subject: "General Knowledge", type: "written", difficulty: "Tight",
+        qEn: "Name the strategic strait that connects the Mediterranean Sea to the Atlantic Ocean, separating Europe from Africa.",
+        qMl: "മെഡിറ്ററേനിയൻ കടലിനെ അറ്റ്ലാന്റിക് സമുദ്രവുമായി ബന്ധിപ്പിക്കുന്നതും യൂറോപ്പിനെയും ആഫ്രിക്കയെയും വേർതിരിക്കുന്നതുമായ കടലിടുക്ക് ഏതാണ്?",
+        modelAnswer: "Strait of Gibraltar (ജിബ്രാൾട്ടർ കടലിടുക്ക്)."
+      },
+      {
+        id: 148, subject: "General Knowledge", type: "written", difficulty: "Tight",
+        qEn: "Who was the first Secretary-General of the United Nations (UN), and which country was he from?",
+        qMl: "ഐക്യരാഷ്ട്രസഭയുടെ (UN) ആദ്യ സെക്രട്ടറി ജനറൽ ആരായിരുന്നു? അദ്ദേഹം ഏത് രാജ്യക്കാരനായിരുന്നു?",
+        modelAnswer: "Trygve Lie (ട്രിഗ്വെ ലി) from Norway (നോർവേ)."
+      },
+      {
+        id: 149, subject: "General Knowledge", type: "written", difficulty: "Tight",
+        qEn: "Who is revered as the 'Father of Modern Malayalam' and authored 'Adhyathmaramayanam Kilippattu'?",
+        qMl: "'അധ്യാത്മരാമായണം കിളിപ്പാട്ട്' രചിച്ചതും ആധുനിക മലയാള ഭാഷയുടെ പിതാവ് എന്നറിയപ്പെടുന്നതുമായ കവി ആരാണ്?",
+        modelAnswer: "Thunchaththu Ramanujan Ezhuthachan (തുഞ്ചത്ത് രാമാനുജൻ എഴുത്തച്ഛൻ)."
+      },
+      {
+        id: 150, subject: "General Knowledge", type: "written", difficulty: "Tight",
+        qEn: "Name the world's deepest freshwater lake and the country in which it is situated.",
+        qMl: "ലോകത്തിലെ ഏറ്റവും ആഴമേറിയ ശുദ്ധജല തടാകത്തിന്റെ പേരും അത് സ്ഥിതി ചെയ്യുന്ന രാജ്യവും എഴുതുക.",
+        modelAnswer: "Lake Baikal (ബൈക്കൽ തടാകം) — located in Siberia, Russia (റഷ്യ)."
+      }
+    ];
+
+    // =========================================================================
+    // APPLICATION STATE
+    // =========================================================================
+    const state = {
+      team: {
+        teamCode: "",
+        candidate1: "",
+        candidate2: "",
+        institution: ""
+      },
+      fallbackEmail: localStorage.getItem("tws15_fallback_email") || "",
+      examActive: false,
+      antiCheatArmed: false,
+      submitted: false,
+      currentIdx: 0,
+      langMode: "both", // "both" | "en" | "ml"
+      paletteFilter: "all",
+      mobilePaletteFilter: "all",
+      answers: {}, // { [qId]: number (MCQ index) | string (Written text) }
+      startMs: 0,
+      endMs: 0,
+      timerHandle: null,
+      payload: null,
+      reviewItems: []
+    };
+
+    // =========================================================================
+    // HELPER FUNCTIONS
+    // =========================================================================
+    function showToast(msg, type = "info") {
+      const stack = document.getElementById("toastStack");
+      const el = document.createElement("div");
+      const styles = {
+        info: "bg-slate-900 text-white border-slate-700",
+        success: "bg-emerald-600 text-white border-emerald-500",
+        warning: "bg-amber-500 text-white border-amber-400",
+        error: "bg-rose-600 text-white border-rose-500"
+      };
+      el.className = `pointer-events-auto rounded-2xl px-4 py-3 text-xs sm:text-sm font-bold shadow-xl border ${styles[type] || styles.info} transition-all duration-300 ml-text`;
+      el.textContent = msg;
+      stack.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-8px)";
+        setTimeout(() => el.remove(), 300);
+      }, 3600);
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function isAnswered(q) {
+      const val = state.answers[q.id];
+      if (q.type === "mcq") return typeof val === "number" && val >= 0;
+      return typeof val === "string" && val.trim().length > 0;
+    }
+
+    function formatMMSS(totalSec) {
+      const s = Math.max(0, Math.floor(totalSec));
+      const mins = String(Math.floor(s / 60)).padStart(2, "0");
+      const secs = String(s % 60).padStart(2, "0");
+      return `${mins}:${secs}`;
+    }
+
+    function formatDurationHuman(totalSec) {
+      const s = Math.max(1, Math.floor(totalSec));
+      const mins = Math.floor(s / 60);
+      const secs = s % 60;
+      return `${mins}m ${secs}s`;
+    }
+
+    function formatISTTimestamp(dateObj) {
+      try {
+        return (
+          dateObj.toLocaleString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+          }) + " IST"
+        );
+      } catch (_) {
+        return dateObj.toLocaleString() + " IST";
+      }
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
+    }
+
+    // =========================================================================
+    // COORDINATOR SETTINGS MODAL (OPTIONAL LOCAL FORMSUBMIT FALLBACK)
+    // =========================================================================
+    document.getElementById("openCoordModalBtn").addEventListener("click", () => {
+      document.getElementById("fallbackEmailInput").value = state.fallbackEmail;
+      document.getElementById("coordSettingsModal").classList.remove("hidden");
+    });
+
+    document.getElementById("closeCoordModalBtn").addEventListener("click", () => {
+      document.getElementById("coordSettingsModal").classList.add("hidden");
+    });
+
+    document.getElementById("clearFallbackEmailBtn").addEventListener("click", () => {
+      state.fallbackEmail = "";
+      localStorage.removeItem("tws15_fallback_email");
+      document.getElementById("fallbackEmailInput").value = "";
+      showToast("Local fallback email cleared. Using Vercel /api/submit.", "info");
+    });
+
+    document.getElementById("saveFallbackEmailBtn").addEventListener("click", () => {
+      const val = document.getElementById("fallbackEmailInput").value.trim();
+      if (!isValidEmail(val)) {
+        showToast("Please enter a valid email address.", "error");
+        return;
+      }
+      state.fallbackEmail = val;
+      localStorage.setItem("tws15_fallback_email", val);
+      document.getElementById("coordSettingsModal").classList.add("hidden");
+      showToast(`Local fallback email saved: ${val}`, "success");
+    });
+
+    // =========================================================================
+    // REGISTRATION & START EXAM
+    // =========================================================================
+    document.getElementById("registrationForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById("regErrorAlert");
+      errEl.classList.add("hidden");
+
+      const teamCode = document.getElementById("teamCodeInput").value.trim();
+      const institution = document.getElementById("institutionInput").value.trim();
+      const candidate1 = document.getElementById("candidate1Input").value.trim();
+      const candidate2 = document.getElementById("candidate2Input").value.trim();
+      const agreed = document.getElementById("agreeCheckbox").checked;
+
+      if (!teamCode || !institution || !candidate1 || !candidate2) {
+        errEl.textContent = "ദയവായി ടീം കോഡ്, സ്ഥാപനം/പൂൾ, രണ്ട് മത്സരാർത്ഥികളുടെയും പേരുകൾ എന്നിവ പൂരിപ്പിക്കുക. (Please complete all required registration fields.)";
+        errEl.classList.remove("hidden");
+        return;
+      }
+      if (!agreed) {
+        errEl.textContent = "പരീക്ഷ ആരംഭിക്കുന്നതിന് മുമ്പ് നിബന്ധനകൾ സമ്മതിക്കുന്ന ബോക്സിൽ ടിക്ക് ചെയ്യുക. (Please confirm that you agree to the exam rules.)";
+        errEl.classList.remove("hidden");
+        return;
+      }
+
+      state.team = { teamCode, candidate1, candidate2, institution };
+      beginExamination();
+    });
+
+    function beginExamination() {
+      document.getElementById("registrationScreen").classList.add("hidden");
+      document.getElementById("examScreen").classList.remove("hidden");
+      document.getElementById("examHeaderTeamInfo").textContent = `${state.team.teamCode} • ${state.team.institution}`;
+
+      state.examActive = true;
+      state.antiCheatArmed = false;
+      state.submitted = false;
+      state.currentIdx = 0;
+      state.startMs = Date.now();
+      state.endMs = state.startMs + EXAM_DURATION_SEC * 1000;
+
+      renderQuestion();
+      renderPalettes();
+      updateCounters();
+      tickTimer();
+      state.timerHandle = setInterval(tickTimer, 500);
+
+      // Arm strict tab-switch / minimize detection immediately after initial render settles
+      setTimeout(() => {
+        if (state.examActive && !state.submitted) {
+          state.antiCheatArmed = true;
+          showToast("🔒 Anti-Cheat Active: Do NOT switch tabs or minimize!", "warning");
+        }
+      }, 600);
+    }
+
+    // =========================================================================
+    // STRICT 90:00 TIMER & AUTO-SUBMIT
+    // =========================================================================
+    function tickTimer() {
+      if (!state.examActive || state.submitted) return;
+      const remMs = state.endMs - Date.now();
+      const remSec = Math.max(0, Math.ceil(remMs / 1000));
+      const clockEl = document.getElementById("timerClock");
+      const pillEl = document.getElementById("timerPill");
+
+      clockEl.textContent = formatMMSS(remSec);
+      pillEl.classList.remove("text-emerald-400", "text-amber-400", "text-rose-400", "border-amber-500", "border-rose-500", "bg-rose-950", "timer-critical");
+
+      if (remSec <= 300) {
+        pillEl.classList.add("text-rose-400", "border-rose-500", "bg-rose-950", "timer-critical");
+      } else if (remSec <= 900) {
+        pillEl.classList.add("text-amber-400", "border-amber-500");
+      } else {
+        pillEl.classList.add("text-emerald-400");
+      }
+
+      if (remSec <= 0) {
+        finalizeAndSubmit("Time Expired / സമയം കഴിഞ്ഞു", "timeout");
+      }
+    }
+
+    // =========================================================================
+    // STRICT ANTI-CHEAT: INSTANT AUTO-SUBMIT ON TAB SWITCH / MINIMIZE / BLUR
+    // =========================================================================
+    document.addEventListener("visibilitychange", () => {
+      if (state.examActive && state.antiCheatArmed && !state.submitted && document.hidden === true) {
+        finalizeAndSubmit("Tab Switch / Window Minimized Violation", "violation");
+      }
+    });
+
+    window.addEventListener("blur", () => {
+      if (state.examActive && state.antiCheatArmed && !state.submitted) {
+        finalizeAndSubmit("Tab Switch / Window Minimized Violation", "violation");
+      }
+    });
+
+    // Block right-click, copy, cut, paste, DevTools, and print shortcuts during active exam
+    document.addEventListener("contextmenu", (e) => {
+      if (state.examActive && !state.submitted) e.preventDefault();
+    });
+
+    ["copy", "cut", "paste"].forEach((evt) => {
+      document.addEventListener(evt, (e) => {
+        if (state.examActive && !state.submitted) {
+          e.preventDefault();
+          showToast("Copy, cut, and paste are disabled during the active exam.", "warning");
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!state.examActive || state.submitted) return;
+      const key = e.key.toLowerCase();
+      const ctrl = e.ctrlKey || e.metaKey;
+
+      // Block DevTools, View Source, Save, Print, Copy/Cut/Paste shortcuts
+      if (
+        e.key === "F12" ||
+        (ctrl && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+        (ctrl && ["u", "p", "s", "c", "v", "x"].includes(key))
+      ) {
+        e.preventDefault();
+        return;
+      }
+
+      // Keyboard arrow navigation when not typing in textarea
+      const isTyping = e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT";
+      if (!isTyping) {
+        if (e.key === "ArrowRight" && state.currentIdx < QUESTIONS.length - 1) {
+          jumpTo(state.currentIdx + 1);
+        } else if (e.key === "ArrowLeft" && state.currentIdx > 0) {
+          jumpTo(state.currentIdx - 1);
+        }
+      }
+    });
+
+    // =========================================================================
+    // ACTIVE EXAM RENDERER & NAVIGATION
+    // =========================================================================
+    function jumpTo(index) {
+      if (index < 0 || index >= QUESTIONS.length) return;
+      state.currentIdx = index;
+      renderQuestion();
+      renderPalettes();
+      highlightActiveSubjectNav();
+    }
+
+    function highlightActiveSubjectNav() {
+      const q = QUESTIONS[state.currentIdx];
+      document.querySelectorAll(".subj-nav-btn").forEach((btn) => {
+        const j = Number(btn.dataset.jump);
+        const active =
+          (j === 0 && q.subject === "Science") ||
+          (j === 50 && q.subject === "Mathematics") ||
+          (j === 100 && q.subject === "General Knowledge");
+        btn.classList.toggle("bg-indigo-600", active);
+        btn.classList.toggle("text-white", active);
+        btn.classList.toggle("bg-slate-800", !active);
+        btn.classList.toggle("text-slate-200", !active);
+      });
+    }
+
+    function renderQuestion() {
+      const q = QUESTIONS[state.currentIdx];
+      const answered = isAnswered(q);
+
+      document.getElementById("qBadgeNumber").textContent = `Q ${q.id} / 150`;
+
+      const subjEl = document.getElementById("qBadgeSubject");
+      if (q.subject === "Science") {
+        subjEl.textContent = "🔬 Science / സയൻസ്";
+        subjEl.className = "px-3 py-1 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200 font-extrabold text-xs";
+      } else if (q.subject === "Mathematics") {
+        subjEl.textContent = "📐 Mathematics / ഗണിതം";
+        subjEl.className = "px-3 py-1 rounded-xl bg-blue-50 text-blue-900 border border-blue-200 font-extrabold text-xs";
+      } else {
+        subjEl.textContent = "🌍 General Knowledge / ജി.കെ";
+        subjEl.className = "px-3 py-1 rounded-xl bg-purple-50 text-purple-900 border border-purple-200 font-extrabold text-xs";
+      }
+
+      const diffEl = document.getElementById("qBadgeDifficulty");
+      diffEl.textContent = q.difficulty === "Medium" ? "⚡ Medium" : "🔥 Tight";
+      diffEl.className = q.difficulty === "Medium"
+        ? "px-3 py-1 rounded-xl bg-amber-100 text-amber-950 border border-amber-200 font-extrabold text-xs"
+        : "px-3 py-1 rounded-xl bg-rose-100 text-rose-950 border border-rose-200 font-extrabold text-xs";
+
+      const typeEl = document.getElementById("qBadgeType");
+      typeEl.textContent = q.type === "mcq" ? "MCQ" : "✍️ Written / എഴുതാനുള്ളത്";
+      typeEl.className = q.type === "mcq"
+        ? "px-3 py-1 rounded-xl bg-sky-100 text-sky-950 border border-sky-200 font-extrabold text-xs"
+        : "px-3 py-1 rounded-xl bg-purple-100 text-purple-950 border border-purple-200 font-extrabold text-xs";
+
+      updateAnsweredBadge(answered);
+
+      // Bilingual stem visibility
+      const enEl = document.getElementById("qTextEn");
+      const mlEl = document.getElementById("qTextMl");
+      enEl.textContent = q.qEn;
+      mlEl.textContent = q.qMl;
+      enEl.classList.toggle("hidden", state.langMode === "ml");
+      mlEl.classList.toggle("hidden", state.langMode === "en");
+
+      // Answer controls
+      const container = document.getElementById("answerControls");
+      container.innerHTML = "";
+
+      if (q.type === "mcq") {
+        const letters = ["A", "B", "C", "D"];
+        const chosen = state.answers[q.id];
+        const list = document.createElement("div");
+        list.className = "grid grid-cols-1 gap-3";
+
+        q.opts.forEach((opt, i) => {
+          const isSelected = chosen === i;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = `w-full text-left p-4 rounded-2xl border-2 transition flex items-center gap-3.5 group ${
+            isSelected
+              ? "border-indigo-600 bg-indigo-50 shadow-sm"
+              : "border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50"
+          }`;
+          btn.innerHTML = `
+            <span class="w-9 h-9 rounded-xl font-black text-sm flex items-center justify-center shrink-0 transition ${
+              isSelected
+                ? "bg-indigo-600 text-white"
+                : "bg-slate-100 text-slate-700 group-hover:bg-indigo-100 group-hover:text-indigo-800"
+            }">${letters[i]}</span>
+            <span class="text-sm sm:text-base font-semibold text-slate-800 ml-text">${escapeHtml(opt)}</span>
+          `;
+          btn.addEventListener("click", () => {
+            state.answers[q.id] = i;
+            renderQuestion();
+            renderPalettes();
+            updateCounters();
+          });
+          list.appendChild(btn);
+        });
+        container.appendChild(list);
+      } else {
+        const val = typeof state.answers[q.id] === "string" ? state.answers[q.id] : "";
+        const box = document.createElement("div");
+        box.className = "space-y-3 rounded-2xl bg-purple-50/70 border-2 border-purple-200 p-5";
+        box.innerHTML = `
+          <label for="writtenResponseBox" class="block text-xs sm:text-sm font-extrabold text-purple-950 ml-text">
+            ✍️ Written / Descriptive Response (ഇംഗ്ലീഷിലോ മലയാളത്തിലോ ഉത്തരം എഴുതുക):
+          </label>
+          <textarea
+            id="writtenResponseBox"
+            rows="4"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Write your clear, concise answer here / നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക..."
+            class="w-full rounded-xl border-2 border-purple-300 bg-white px-4 py-3 text-sm sm:text-base font-semibold text-slate-900 focus:border-purple-600 focus:ring-2 focus:ring-purple-200 outline-none resize-y ml-text"
+          >${escapeHtml(val)}</textarea>
+          <div class="flex items-center justify-between text-[11px] text-purple-800 font-semibold ml-text">
+            <span>ഉത്തരം എഴുതുന്നതിനനുസരിച്ച് ഓട്ടോമാറ്റിക്കായി സേവ് ആകും (Auto-saved).</span>
+            <span id="writtenCharCount">${val.trim().length} chars</span>
+          </div>
+        `;
+        container.appendChild(box);
+        const ta = box.querySelector("#writtenResponseBox");
+        ta.addEventListener("input", (e) => {
+          state.answers[q.id] = e.target.value;
+          const len = e.target.value.trim().length;
+          const cntEl = document.getElementById("writtenCharCount");
+          if (cntEl) cntEl.textContent = `${len} chars`;
+          updateAnsweredBadge(len > 0);
+          updateCounters();
+          renderPalettes();
+        });
+      }
+
+      // Prev / Next state
+      document.getElementById("prevQBtn").disabled = state.currentIdx === 0;
+      const nextBtn = document.getElementById("nextQBtn");
+      if (state.currentIdx === QUESTIONS.length - 1) {
+        nextBtn.textContent = "Review & Submit Exam ✓";
+        nextBtn.className = "px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition";
+      } else {
+        nextBtn.textContent = "Next Question →";
+        nextBtn.className = "px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition";
+      }
+
+      highlightActiveSubjectNav();
+    }
+
+    function updateAnsweredBadge(answered) {
+      const pill = document.getElementById("qAnsweredPill");
+      if (answered) {
+        pill.textContent = "✅ Answered";
+        pill.className = "px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs";
+      } else {
+        pill.textContent = "⚪ Unanswered";
+        pill.className = "px-3 py-1 rounded-full bg-slate-100 text-slate-500 font-bold text-xs";
+      }
+    }
+
+    function updateCounters() {
+      let sci = 0, math = 0, gk = 0;
+      QUESTIONS.forEach((q) => {
+        if (!isAnswered(q)) return;
+        if (q.subject === "Science") sci++;
+        else if (q.subject === "Mathematics") math++;
+        else gk++;
+      });
+      const total = sci + math + gk;
+      document.getElementById("navCntScience").textContent = `${sci}/50`;
+      document.getElementById("navCntMaths").textContent = `${math}/50`;
+      document.getElementById("navCntGK").textContent = `${gk}/50`;
+      document.getElementById("headerTotalAnswered").textContent = `${total} / 150`;
+      document.getElementById("mobileCountText").textContent = `${total}/150`;
+      document.getElementById("paletteProgressLabel").textContent = `${total} / 150 (${Math.round((total / 150) * 100)}%)`;
+      document.getElementById("paletteProgressBar").style.width = `${(total / 150) * 100}%`;
+    }
+
+    function renderPalettes() {
+      const desk = document.getElementById("desktopPalette");
+      const mob = document.getElementById("mobilePalette");
+      desk.innerHTML = "";
+      mob.innerHTML = "";
+
+      QUESTIONS.forEach((q, idx) => {
+        const isCurrent = idx === state.currentIdx;
+        const ans = isAnswered(q);
+        const writtenRing = q.type === "written" ? "border-2 border-purple-500" : "border border-transparent";
+        let colorCls = "bg-slate-100 text-slate-700 hover:bg-slate-200";
+        if (isCurrent) {
+          colorCls = "bg-indigo-600 text-white ring-2 ring-indigo-300 shadow-sm";
+        } else if (ans) {
+          colorCls = "bg-emerald-500 text-white hover:bg-emerald-600";
+        }
+        const cls = `h-9 rounded-xl text-xs font-extrabold transition flex items-center justify-center ${colorCls} ${writtenRing}`;
+
+        if (state.paletteFilter === "all" || q.subject === state.paletteFilter) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = cls;
+          b.textContent = q.id;
+          b.title = `Q${q.id} • ${q.subject} • ${q.difficulty} • ${q.type.toUpperCase()}`;
+          b.addEventListener("click", () => jumpTo(idx));
+          desk.appendChild(b);
+        }
+
+        if (state.mobilePaletteFilter === "all" || q.subject === state.mobilePaletteFilter) {
+          const bm = document.createElement("button");
+          bm.type = "button";
+          bm.className = cls;
+          bm.textContent = q.id;
+          bm.addEventListener("click", () => {
+            jumpTo(idx);
+            document.getElementById("mobilePaletteModal").classList.add("hidden");
+          });
+          mob.appendChild(bm);
+        }
+      });
+    }
+
+    // Bind navigation controls
+    document.getElementById("prevQBtn").addEventListener("click", () => {
+      if (state.currentIdx > 0) jumpTo(state.currentIdx - 1);
+    });
+    document.getElementById("nextQBtn").addEventListener("click", () => {
+      if (state.currentIdx < QUESTIONS.length - 1) jumpTo(state.currentIdx + 1);
+      else openManualSubmitModal();
+    });
+    document.getElementById("clearQBtn").addEventListener("click", () => {
+      delete state.answers[QUESTIONS[state.currentIdx].id];
+      renderQuestion();
+      renderPalettes();
+      updateCounters();
+    });
+
+    document.querySelectorAll(".subj-nav-btn").forEach((btn) => {
+      btn.addEventListener("click", () => jumpTo(Number(btn.dataset.jump)));
+    });
+
+    document.querySelectorAll(".lang-toggle-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.langMode = btn.dataset.lang;
+        document.querySelectorAll(".lang-toggle-btn").forEach((b) => {
+          const active = b.dataset.lang === state.langMode;
+          b.classList.toggle("bg-indigo-600", active);
+          b.classList.toggle("text-white", active);
+          b.classList.toggle("text-slate-300", !active);
+        });
+        renderQuestion();
+      });
+    });
+
+    document.querySelectorAll(".palette-filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.paletteFilter = btn.dataset.pfilter;
+        document.querySelectorAll(".palette-filter-btn").forEach((b) => {
+          const active = b.dataset.pfilter === state.paletteFilter;
+          b.className = active
+            ? "palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-900 text-white transition"
+            : "palette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+        });
+        renderPalettes();
+      });
+    });
+
+    document.querySelectorAll(".mpalette-filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.mobilePaletteFilter = btn.dataset.mpfilter;
+        document.querySelectorAll(".mpalette-filter-btn").forEach((b) => {
+          const active = b.dataset.mpfilter === state.mobilePaletteFilter;
+          b.className = active
+            ? "mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-900 text-white"
+            : "mpalette-filter-btn flex-1 py-1.5 rounded-lg bg-slate-100 text-slate-700";
+        });
+        renderPalettes();
+      });
+    });
+
+    document.getElementById("openMobilePaletteBtn").addEventListener("click", () => {
+      document.getElementById("mobilePaletteModal").classList.remove("hidden");
+    });
+    document.getElementById("closeMobilePaletteBtn").addEventListener("click", () => {
+      document.getElementById("mobilePaletteModal").classList.add("hidden");
+    });
+
+    // Manual Submit Modal
+    function openManualSubmitModal() {
+      const mcqAns = QUESTIONS.filter((q) => q.type === "mcq" && isAnswered(q)).length;
+      const writAns = QUESTIONS.filter((q) => q.type === "written" && isAnswered(q)).length;
+      document.getElementById("modalMcqAns").textContent = `${mcqAns}/120`;
+      document.getElementById("modalWrittenAns").textContent = `${writAns}/30`;
+      document.getElementById("modalTotalUnans").textContent = 150 - (mcqAns + writAns);
+      document.getElementById("confirmSubmitModal").classList.remove("hidden");
+    }
+
+    document.getElementById("triggerSubmitModalBtn").addEventListener("click", openManualSubmitModal);
+    document.getElementById("cancelSubmitModalBtn").addEventListener("click", () => {
+      document.getElementById("confirmSubmitModal").classList.add("hidden");
+    });
+    document.getElementById("confirmFinalSubmitBtn").addEventListener("click", () => {
+      document.getElementById("confirmSubmitModal").classList.add("hidden");
+      finalizeAndSubmit("Manual Submission by Team / മത്സരാർത്ഥികൾ സ്വയം സമർപ്പിച്ചു", "manual");
+    });
+
+    // =========================================================================
+    // EXACT EVALUATION ENGINE & VERCEL /api/submit PAYLOAD BUILDER
+    // =========================================================================
+    function buildEvaluationPayload(submitReason) {
+      const letters = ["A", "B", "C", "D"];
+      const elapsedSec = Math.min(EXAM_DURATION_SEC, Math.max(1, Math.round((Date.now() - state.startMs) / 1000)));
+      const submittedAt = formatISTTimestamp(new Date());
+      const timeTaken = formatDurationHuman(elapsedSec);
+
+      let mcqCorrect = 0;
+      let mcqWrong = 0;
+      let mcqUnanswered = 0;
+      let descAttempted = 0;
+      let descUnanswered = 0;
+
+      const subjects = {
+        "Science": { mcqTotal: 40, correct: 0, wrong: 0, unanswered: 0, descriptiveAttempted: 0, descriptiveTotal: 10 },
+        "Mathematics": { mcqTotal: 40, correct: 0, wrong: 0, unanswered: 0, descriptiveAttempted: 0, descriptiveTotal: 10 },
+        "General Knowledge": { mcqTotal: 40, correct: 0, wrong: 0, unanswered: 0, descriptiveAttempted: 0, descriptiveTotal: 10 }
+      };
+
+      const correctQuestionNumbers = [];
+      const unansweredQuestionNumbers = [];
+      const wrongQuestions = [];
+      const descriptiveAnswers = [];
+      const reviewItems = [];
+
+      QUESTIONS.forEach((q) => {
+        const raw = state.answers[q.id];
+        const subjStat = subjects[q.subject];
+
+        if (q.type === "mcq") {
+          const correctStr = `(${letters[q.ans]}) ${q.opts[q.ans]}`;
+          if (typeof raw === "number" && raw >= 0) {
+            const studentStr = `(${letters[raw]}) ${q.opts[raw]}`;
+            if (raw === q.ans) {
+              mcqCorrect++;
+              subjStat.correct++;
+              correctQuestionNumbers.push(q.id);
+              reviewItems.push({ q, status: "correct", studentAnswer: studentStr, expectedAnswer: correctStr });
+            } else {
+              mcqWrong++;
+              subjStat.wrong++;
+              wrongQuestions.push({
+                qNo: q.id,
+                subject: q.subject,
+                difficulty: q.difficulty,
+                questionEn: q.qEn,
+                studentAnswer: studentStr,
+                correctAnswer: correctStr
+              });
+              reviewItems.push({ q, status: "wrong", studentAnswer: studentStr, expectedAnswer: correctStr });
+            }
+          } else {
+            mcqUnanswered++;
+            subjStat.unanswered++;
+            unansweredQuestionNumbers.push(q.id);
+            reviewItems.push({ q, status: "unanswered", studentAnswer: "Not Answered / ഉത്തരം നൽകിയില്ല", expectedAnswer: correctStr });
+          }
+        } else {
+          const typed = typeof raw === "string" ? raw.trim() : "";
+          const attempted = typed.length > 0;
+          if (attempted) {
+            descAttempted++;
+            subjStat.descriptiveAttempted++;
+          } else {
+            descUnanswered++;
+          }
+          descriptiveAnswers.push({
+            qNo: q.id,
+            subject: q.subject,
+            difficulty: q.difficulty,
+            questionEn: q.qEn,
+            studentAnswer: attempted ? typed : "Not Answered",
+            modelAnswer: q.modelAnswer
+          });
+          reviewItems.push({
+            q,
+            status: attempted ? "written-attempted" : "written-unanswered",
+            studentAnswer: attempted ? typed : "Not Answered / ഉത്തരം നൽകിയില്ല",
+            expectedAnswer: q.modelAnswer
+          });
+        }
+      });
+
+      const attemptedMcqs = mcqCorrect + mcqWrong;
+      const accuracyPercent = attemptedMcqs > 0 ? `${((mcqCorrect / attemptedMcqs) * 100).toFixed(1)}%` : "0.0%";
+
+      // EXACT JSON SCHEMA REQUIRED BY VERCEL /api/submit
+      const payload = {
+        examTitle: EXAM_TITLE,
+        teamCode: state.team.teamCode,
+        candidate1: state.team.candidate1,
+        candidate2: state.team.candidate2,
+        institution: state.team.institution,
+        submitReason: submitReason,
+        submittedAt: submittedAt,
+        timeTaken: timeTaken,
+        summary: {
+          totalQuestions: 150,
+          mcqTotal: 120,
+          correct: mcqCorrect,
+          wrong: mcqWrong,
+          unanswered: mcqUnanswered,
+          accuracyPercent: accuracyPercent,
+          descriptiveTotal: 30,
+          descriptiveAttempted: descAttempted,
+          descriptiveUnanswered: descUnanswered
+        },
+        subjects: subjects,
+        correctQuestionNumbers: correctQuestionNumbers,
+        unansweredQuestionNumbers: unansweredQuestionNumbers,
+        wrongQuestions: wrongQuestions,
+        descriptiveAnswers: descriptiveAnswers
+      };
+
+      return { payload, reviewItems };
+    }
+
+    function finalizeAndSubmit(reasonText, reasonKind) {
+      if (state.submitted) return;
+      state.submitted = true;
+      state.examActive = false;
+      state.antiCheatArmed = false;
+
+      if (state.timerHandle) {
+        clearInterval(state.timerHandle);
+        state.timerHandle = null;
+      }
+
+      document.getElementById("confirmSubmitModal").classList.add("hidden");
+      document.getElementById("mobilePaletteModal").classList.add("hidden");
+
+      const { payload, reviewItems } = buildEvaluationPayload(reasonText);
+      state.payload = payload;
+      state.reviewItems = reviewItems;
+
+      // Switch view to Result Dashboard
+      document.getElementById("examScreen").classList.add("hidden");
+      document.getElementById("resultScreen").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      renderResultDashboard(payload, reasonKind);
+      dispatchSubmissionToVercel(payload);
+    }
+
+    // =========================================================================
+    // VERCEL /api/submit POST & LIVE STATUS BANNER (+ OPTIONAL LOCAL FALLBACK)
+    // =========================================================================
+    async function dispatchSubmissionToVercel(payload) {
+      const banner = document.getElementById("emailNotificationBanner");
+      const iconEl = document.getElementById("emailStatusIcon");
+      const headEl = document.getElementById("emailStatusHeadline");
+      const subEl = document.getElementById("emailStatusSubtext");
+      const retryBtn = document.getElementById("retryEmailBtn");
+
+      banner.className = "rounded-2xl bg-indigo-50 border-2 border-indigo-200 shadow-sm p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print";
+      iconEl.textContent = "⏳";
+      headEl.textContent = "Sending Result to Coordinator Email via /api/submit...";
+      subEl.textContent = "കോർഡിനേറ്ററുടെ മെയിലിലേക്ക് ശരി-തെറ്റ് കണക്കുകളും വിവരണ ഉത്തരങ്ങളും ഓട്ടോമാറ്റിക്കായി അയക്കുന്നു...";
+      retryBtn.classList.add("hidden");
+
+      try {
+        const response = await fetch("/api/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        let data = {};
+        try {
+          data = await response.json();
+        } catch (_) {}
+
+        if (response.ok && data.success !== false) {
+          banner.className = "rounded-2xl bg-emerald-50 border-2 border-emerald-300 shadow-sm p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print";
+          iconEl.textContent = "✅";
+          headEl.textContent = "Successfully Sent to Coordinator Email / കോർഡിനേറ്ററുടെ മെയിലിലേക്ക് അയച്ചു!";
+          subEl.textContent = data.message || "കൃത്യമായ മാർക്ക്, ശരിയായവ, തെറ്റിയവ, എഴുതിയ 30 ഉത്തരങ്ങൾ എന്നിവ കോർഡിനേറ്ററുടെ മെയിലിൽ എത്തിയിട്ടുണ്ട്.";
+          retryBtn.classList.add("hidden");
+          showToast("✅ Coordinator notified via email!", "success");
+          return;
+        }
+        throw new Error(data.error || data.message || `Server responded with HTTP ${response.status}`);
+      } catch (vercelErr) {
+        // Optional Local Fallback via FormSubmit ONLY if configured in hidden Coordinator Settings
+        if (isValidEmail(state.fallbackEmail)) {
+          try {
+            headEl.textContent = `Vercel /api/submit unavailable locally — trying FormSubmit fallback (${state.fallbackEmail})...`;
+            const fsPayload = {
+              _subject: `${payload.examTitle} | ${payload.teamCode} | Correct: ${payload.summary.correct}/120`,
+              _template: "table",
+              _captcha: "false",
+              Team_Code: payload.teamCode,
+              Candidates: `${payload.candidate1} & ${payload.candidate2}`,
+              Institution: payload.institution,
+              Submit_Reason: payload.submitReason,
+              Submitted_At: payload.submittedAt,
+              Time_Taken: payload.timeTaken,
+              MCQ_Score: `Correct: ${payload.summary.correct} | Wrong: ${payload.summary.wrong} | Unanswered: ${payload.summary.unanswered} | Accuracy: ${payload.summary.accuracyPercent}`,
+              Written_Status: `Attempted: ${payload.summary.descriptiveAttempted}/30`,
+              Science: `C:${payload.subjects.Science.correct} W:${payload.subjects.Science.wrong} U:${payload.subjects.Science.unanswered}`,
+              Mathematics: `C:${payload.subjects.Mathematics.correct} W:${payload.subjects.Mathematics.wrong} U:${payload.subjects.Mathematics.unanswered}`,
+              General_Knowledge: `C:${payload.subjects["General Knowledge"].correct} W:${payload.subjects["General Knowledge"].wrong} U:${payload.subjects["General Knowledge"].unanswered}`,
+              Correct_Question_Numbers: payload.correctQuestionNumbers.join(", ") || "None",
+              Wrong_Questions: payload.wrongQuestions.map((w) => `Q${w.qNo}: Team=${w.studentAnswer} | Correct=${w.correctAnswer}`).join("\n") || "None",
+              Descriptive_Answers: payload.descriptiveAnswers.map((d) => `Q${d.qNo}: ${d.studentAnswer}`).join("\n")
+            };
+
+            const fsRes = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(state.fallbackEmail)}`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Accept": "application/json" },
+              body: JSON.stringify(fsPayload)
+            });
+            const fsData = await fsRes.json();
+            if (fsRes.ok && (fsData.success === true || fsData.success === "true")) {
+              banner.className = "rounded-2xl bg-emerald-50 border-2 border-emerald-300 shadow-sm p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print";
+              iconEl.textContent = "✅";
+              headEl.textContent = `Successfully Sent via Local Fallback Email (${state.fallbackEmail})`;
+              subEl.textContent = "ലോക്കൽ ടെസ്റ്റിംഗ് ഫാൾബാക്ക് വഴി കോർഡിനേറ്ററുടെ മെയിലിലേക്ക് റിസൾട്ട് അയച്ചു.";
+              retryBtn.classList.add("hidden");
+              return;
+            }
+            throw new Error(fsData.message || "Fallback email failed.");
+          } catch (fallbackErr) {
+            showEmailErrorState(banner, iconEl, headEl, subEl, retryBtn, `Vercel /api/submit & fallback failed: ${fallbackErr.message}`);
+            return;
+          }
+        }
+
+        showEmailErrorState(banner, iconEl, headEl, subEl, retryBtn, vercelErr.message);
+      }
+    }
+
+    function showEmailErrorState(banner, iconEl, headEl, subEl, retryBtn, errMessage) {
+      banner.className = "rounded-2xl bg-rose-50 border-2 border-rose-300 shadow-sm p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print";
+      iconEl.textContent = "⚠️";
+      headEl.textContent = "Email Notification Delivery Failed / മെയിൽ അയക്കാൻ കഴിഞ്ഞില്ല";
+      subEl.textContent = `Reason: ${errMessage}. ഇന്റർനെറ്റ് അല്ലെങ്കിൽ Vercel /api/submit എൻഡ്‌പോയിന്റ് പരിശോധിച്ച ശേഷം 'Retry Sending Email' ക്ലിക്ക് ചെയ്യുക. (നിങ്ങൾക്ക് താഴെ നിന്ന് PDF / CSV / TXT റിപ്പോർട്ട് ഡൗൺലോഡ് ചെയ്യാനും കഴിയും.)`;
+      retryBtn.classList.remove("hidden");
+    }
+
+    document.getElementById("retryEmailBtn").addEventListener("click", () => {
+      if (state.payload) dispatchSubmissionToVercel(state.payload);
+    });
+
+    // =========================================================================
+    // RENDER RESULT DASHBOARD, SUBJECT ACCURACY TABLE & REVIEW TABS
+    // =========================================================================
+    function renderResultDashboard(p, reasonKind) {
+      const header = document.getElementById("resultHeaderBanner");
+      const badge = document.getElementById("submitTypeBadge");
+      const reasonEl = document.getElementById("submitReasonText");
+
+      if (reasonKind === "manual") {
+        header.className = "rounded-3xl p-6 shadow-md border-2 bg-emerald-50 border-emerald-300 flex flex-col md:flex-row md:items-center justify-between gap-4";
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-600 text-white";
+        badge.textContent = "✅ SUBMITTED SUCCESSFULLY";
+        reasonEl.className = "text-sm font-bold text-emerald-900 ml-text";
+      } else if (reasonKind === "timeout") {
+        header.className = "rounded-3xl p-6 shadow-md border-2 bg-amber-50 border-amber-300 flex flex-col md:flex-row md:items-center justify-between gap-4";
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-600 text-white";
+        badge.textContent = "⏰ AUTO-SUBMITTED (TIME EXPIRED)";
+        reasonEl.className = "text-sm font-bold text-amber-900 ml-text";
+      } else {
+        header.className = "rounded-3xl p-6 shadow-md border-2 bg-rose-50 border-rose-400 flex flex-col md:flex-row md:items-center justify-between gap-4";
+        badge.className = "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-600 text-white";
+        badge.textContent = "🚨 AUTO-SUBMITTED (ANTI-CHEAT VIOLATION)";
+        reasonEl.className = "text-sm font-extrabold text-rose-900 ml-text";
+      }
+      reasonEl.textContent = `സമർപ്പണ കാരണം / Submission Reason: ${p.submitReason}`;
+
+      document.getElementById("resTeamSummary").textContent = `Team Code: ${p.teamCode}`;
+      document.getElementById("resCandidatesSummary").textContent = `${p.candidate1} & ${p.candidate2}`;
+      document.getElementById("resInstitutionSummary").textContent = p.institution;
+      document.getElementById("resTimestampSummary").textContent = `${p.submittedAt} • Duration: ${p.timeTaken}`;
+
+      // KPI Cards
+      document.getElementById("kpiCorrect").textContent = p.summary.correct;
+      document.getElementById("kpiWrong").textContent = p.summary.wrong;
+      document.getElementById("kpiUnanswered").textContent = p.summary.unanswered;
+      document.getElementById("kpiWritten").textContent = p.summary.descriptiveAttempted;
+      document.getElementById("kpiAccuracy").textContent = p.summary.accuracyPercent;
+      document.getElementById("kpiTimeTaken").textContent = `Time Taken: ${p.timeTaken}`;
+
+      // Subject-wise Accuracy Table
+      const tbody = document.getElementById("subjectTableBody");
+      tbody.innerHTML = "";
+      const subjLabels = {
+        "Science": "🔬 Science / സയൻസ്",
+        "Mathematics": "📐 Mathematics / ഗണിതം",
+        "General Knowledge": "🌍 General Knowledge / ജി.കെ"
+      };
+
+      Object.keys(p.subjects).forEach((subjKey) => {
+        const s = p.subjects[subjKey];
+        const att = s.correct + s.wrong;
+        const acc = att > 0 ? `${((s.correct / att) * 100).toFixed(1)}%` : "0.0%";
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50 transition";
+        tr.innerHTML = `
+          <td class="py-3.5 px-4 font-bold text-slate-900 ml-text">${subjLabels[subjKey]}</td>
+          <td class="py-3.5 px-3 text-center font-semibold text-slate-600">${s.mcqTotal}</td>
+          <td class="py-3.5 px-3 text-center font-extrabold text-emerald-700">${s.correct}</td>
+          <td class="py-3.5 px-3 text-center font-extrabold text-rose-700">${s.wrong}</td>
+          <td class="py-3.5 px-3 text-center font-bold text-slate-600">${s.unanswered}</td>
+          <td class="py-3.5 px-3 text-center font-black text-indigo-700">${acc}</td>
+          <td class="py-3.5 px-4 text-center font-extrabold text-purple-700">${s.descriptiveAttempted}/${s.descriptiveTotal}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Grand Total Row
+      const totalRow = document.createElement("tr");
+      totalRow.className = "bg-slate-900 text-white font-extrabold";
+      totalRow.innerHTML = `
+        <td class="py-3.5 px-4">Total / ആകെ</td>
+        <td class="py-3.5 px-3 text-center">${p.summary.mcqTotal}</td>
+        <td class="py-3.5 px-3 text-center text-emerald-400">${p.summary.correct}</td>
+        <td class="py-3.5 px-3 text-center text-rose-400">${p.summary.wrong}</td>
+        <td class="py-3.5 px-3 text-center text-slate-300">${p.summary.unanswered}</td>
+        <td class="py-3.5 px-3 text-center text-amber-300">${p.summary.accuracyPercent}</td>
+        <td class="py-3.5 px-4 text-center text-purple-300">${p.summary.descriptiveAttempted}/${p.summary.descriptiveTotal}</td>
+      `;
+      tbody.appendChild(totalRow);
+
+      // Tab counts
+      document.getElementById("tabCntCorrect").textContent = p.summary.correct;
+      document.getElementById("tabCntWrong").textContent = p.summary.wrong;
+      document.getElementById("tabCntUnans").textContent = p.summary.unanswered;
+
+      renderReviewCards("all");
+    }
+
+    function renderReviewCards(filter) {
+      const container = document.getElementById("reviewContainer");
+      container.innerHTML = "";
+
+      const list = state.reviewItems.filter((item) => {
+        if (filter === "all") return true;
+        if (filter === "correct") return item.status === "correct";
+        if (filter === "wrong") return item.status === "wrong";
+        if (filter === "unanswered") return item.status === "unanswered";
+        if (filter === "written") return item.q.type === "written";
+        return true;
+      });
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="py-12 text-center text-slate-500 font-bold ml-text">ഈ വിഭാഗത്തിൽ ചോദ്യങ്ങളൊന്നുമില്ല / No questions match this filter.</div>`;
+        return;
+      }
+
+      list.forEach(({ q, status, studentAnswer, expectedAnswer }) => {
+        const card = document.createElement("div");
+        card.className = "print-card rounded-2xl border border-slate-200 p-4 sm:p-5 bg-white hover:border-slate-300 transition";
+
+        let statusBadge = "";
+        let studentBoxCls = "bg-slate-50 border-slate-200 text-slate-700";
+        if (status === "correct") {
+          statusBadge = `<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold">✅ ശരി / Correct</span>`;
+          studentBoxCls = "bg-emerald-50 border-emerald-200 text-emerald-950";
+        } else if (status === "wrong") {
+          statusBadge = `<span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-extrabold">❌ തെറ്റ് / Wrong</span>`;
+          studentBoxCls = "bg-rose-50 border-rose-200 text-rose-950";
+        } else if (status === "unanswered") {
+          statusBadge = `<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-extrabold">⚪ ഒഴിവാക്കി / Unanswered</span>`;
+        } else if (status === "written-attempted") {
+          statusBadge = `<span class="px-3 py-1 rounded-full bg-purple-100 text-purple-900 text-xs font-extrabold">✍️ Written Attempted (Manual Eval)</span>`;
+          studentBoxCls = "bg-purple-50 border-purple-200 text-purple-950";
+        } else {
+          statusBadge = `<span class="px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-extrabold">✍️ Written Unanswered</span>`;
+        }
+
+        const expectedLabel = q.type === "mcq"
+          ? "Correct Answer / ശരിയുത്തരം"
+          : "Model Answer / മാതൃകാ ഉത്തരം";
+
+        card.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-lg bg-slate-900 text-white text-xs font-black">Q${q.id}</span>
+              <span class="px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold">${q.subject}</span>
+              <span class="px-2.5 py-0.5 rounded-lg ${q.difficulty === "Medium" ? "bg-amber-100 text-amber-900" : "bg-rose-100 text-rose-900"} text-xs font-bold">${q.difficulty}</span>
+              <span class="px-2.5 py-0.5 rounded-lg ${q.type === "mcq" ? "bg-sky-100 text-sky-900" : "bg-purple-100 text-purple-900"} text-xs font-bold">${q.type === "mcq" ? "MCQ" : "Written"}</span>
+            </div>
+            ${statusBadge}
+          </div>
+
+          <p class="text-sm sm:text-base font-bold text-slate-900">${escapeHtml(q.qEn)}</p>
+          <p class="text-xs sm:text-sm font-medium text-slate-700 ml-text mt-1">${escapeHtml(q.qMl)}</p>
+
+          <div class="mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+            <div class="rounded-xl border p-3.5 ${studentBoxCls}">
+              <div class="text-[11px] font-extrabold uppercase opacity-75">Student's Answer / മത്സരാർത്ഥിയുടെ ഉത്തരം</div>
+              <div class="font-bold mt-1 whitespace-pre-wrap ml-text">${escapeHtml(studentAnswer)}</div>
+            </div>
+            <div class="rounded-xl border border-indigo-200 bg-indigo-50/75 text-indigo-950 p-3.5">
+              <div class="text-[11px] font-extrabold uppercase text-indigo-700">${expectedLabel}</div>
+              <div class="font-bold mt-1 whitespace-pre-wrap ml-text">${escapeHtml(expectedAnswer)}</div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.querySelectorAll(".rev-tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.rfilter;
+        document.querySelectorAll(".rev-tab-btn").forEach((b) => {
+          b.classList.remove("ring-2", "ring-indigo-500", "bg-slate-900", "text-white");
+        });
+        btn.classList.add("ring-2", "ring-indigo-500");
+        renderReviewCards(filter);
+      });
+    });
+
+    // =========================================================================
+    // REPORT EXPORTS: PRINT PDF, CSV, FULL TXT, CLIPBOARD COPY
+    // =========================================================================
+    function generateFullTxtReport() {
+      const p = state.payload;
+      if (!p) return "";
+      const lines = [
+        "======================================================================",
+        `${p.examTitle} — OFFICIAL EVALUATION REPORT`,
+        "======================================================================",
+        `Team Code       : ${p.teamCode}`,
+        `Candidate 1     : ${p.candidate1}`,
+        `Candidate 2     : ${p.candidate2}`,
+        `Institution     : ${p.institution}`,
+        `Submit Reason   : ${p.submitReason}`,
+        `Submitted At    : ${p.submittedAt}`,
+        `Time Taken      : ${p.timeTaken}`,
+        "----------------------------------------------------------------------",
+        `MCQ SUMMARY (120 Total):`,
+        `  Correct       : ${p.summary.correct} / 120`,
+        `  Wrong         : ${p.summary.wrong} / 120`,
+        `  Unanswered    : ${p.summary.unanswered} / 120`,
+        `  Accuracy      : ${p.summary.accuracyPercent}`,
+        `WRITTEN / DESCRIPTIVE SUMMARY (30 Total):`,
+        `  Attempted     : ${p.summary.descriptiveAttempted} / 30`,
+        `  Unanswered    : ${p.summary.descriptiveUnanswered} / 30`,
+        "----------------------------------------------------------------------",
+        "SUBJECT-WISE BREAKDOWN:",
+        `  Science           : Correct=${p.subjects.Science.correct}/40 | Wrong=${p.subjects.Science.wrong} | Unanswered=${p.subjects.Science.unanswered} | Written=${p.subjects.Science.descriptiveAttempted}/10`,
+        `  Mathematics       : Correct=${p.subjects.Mathematics.correct}/40 | Wrong=${p.subjects.Mathematics.wrong} | Unanswered=${p.subjects.Mathematics.unanswered} | Written=${p.subjects.Mathematics.descriptiveAttempted}/10`,
+        `  General Knowledge : Correct=${p.subjects["General Knowledge"].correct}/40 | Wrong=${p.subjects["General Knowledge"].wrong} | Unanswered=${p.subjects["General Knowledge"].unanswered} | Written=${p.subjects["General Knowledge"].descriptiveAttempted}/10`,
+        "----------------------------------------------------------------------",
+        `CORRECT MCQ NUMBERS (${p.correctQuestionNumbers.length}):`,
+        p.correctQuestionNumbers.length ? p.correctQuestionNumbers.join(", ") : "None",
+        "",
+        `UNANSWERED MCQ NUMBERS (${p.unansweredQuestionNumbers.length}):`,
+        p.unansweredQuestionNumbers.length ? p.unansweredQuestionNumbers.join(", ") : "None",
+        "",
+        `WRONG MCQ DETAILS (${p.wrongQuestions.length}):`,
+        ...(p.wrongQuestions.length
+          ? p.wrongQuestions.map((w) => `  Q${w.qNo} [${w.subject} - ${w.difficulty}] ${w.questionEn}\n     Student: ${w.studentAnswer}\n     Correct: ${w.correctAnswer}`)
+          : ["  None"]),
+        "",
+        "WRITTEN / DESCRIPTIVE ANSWERS (ALL 30):",
+        ...p.descriptiveAnswers.map((d) => `  Q${d.qNo} [${d.subject} - ${d.difficulty}] ${d.questionEn}\n     Student: ${d.studentAnswer}\n     Model  : ${d.modelAnswer}`),
+        "======================================================================"
+      ];
+      return lines.join("\n");
+    }
+
+    document.getElementById("printPdfBtn").addEventListener("click", () => {
+      window.print();
+    });
+
+    document.getElementById("downloadTxtBtn").addEventListener("click", () => {
+      const txt = generateFullTxtReport();
+      const blob = new Blob([txt], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `TWS15_Report_${state.payload.teamCode.replace(/\s+/g, "_")}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("downloadCsvBtn").addEventListener("click", () => {
+      if (!state.reviewItems.length) return;
+      const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+      const rows = [
+        ["QNo", "Subject", "Difficulty", "Type", "Question (EN)", "Question (ML)", "Student Answer", "Correct / Model Answer", "Status"]
+      ];
+      state.reviewItems.forEach(({ q, status, studentAnswer, expectedAnswer }) => {
+        rows.push([
+          q.id,
+          q.subject,
+          q.difficulty,
+          q.type.toUpperCase(),
+          q.qEn,
+          q.qMl,
+          studentAnswer,
+          expectedAnswer,
+          status.toUpperCase()
+        ]);
+      });
+      const csv = "\uFEFF" + rows.map((r) => r.map(esc).join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `TWS15_Evaluation_${state.payload.teamCode.replace(/\s+/g, "_")}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("copyFullReportBtn").addEventListener("click", () => {
+      const txt = generateFullTxtReport();
+      const ta = document.createElement("textarea");
+      ta.value = txt;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("✅ Full report copied to clipboard!", "success");
+      } catch (_) {
+        showToast("Copy failed. Please use Download TXT.", "error");
+      }
+      document.body.removeChild(ta);
+    });
+  </script>
+</body>
+</html>
